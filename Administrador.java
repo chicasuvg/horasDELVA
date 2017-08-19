@@ -15,6 +15,7 @@ public class Administrador
 	protected ArrayList<Charla> charlasAdmin;
 	private int index;
 	protected ArrayList<Estudiante> alumnos;
+	private Charla delva;
 
 	public Administrador(String usuario, String contrasena)
 	{
