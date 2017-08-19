@@ -18,9 +18,9 @@ public class Administrador
 	private Charla delva;
 	
 	/**
-	* Constructor de objetos para la clase Administrador.
-	* @param usuario
-	* @param contrasena
+	 Constructor de objetos para la clase Administrador.
+	 @param usuario
+	 @param contrasena
 	*/
 	public Administrador(String usuario, String contrasena)
 	{
@@ -28,9 +28,9 @@ public class Administrador
 		this.contrasena = contrasena;
 	}
 	/**
-	* Agregar charla a las diferentes ArrayList que se crearon.
-	*
-	* @param delva 	a agregar.
+	 Agregar charla a las diferentes ArrayList que se crearon.
+	
+	 @param delva 	a agregar.
 	*/
 	public void agregarCharla(Charla delva)
 	{
@@ -41,9 +41,9 @@ public class Administrador
 		}
 	}
 	/**
-	*Eliminar una charla de las que estan en la arrayList.
-	*
-	*@param busqueda 	a eliminar.
+	Eliminar una charla de las que estan en la arrayList.
+	
+	@param busqueda 	a eliminar.
 	*/
 	public void eliminarCharla(String busqueda)
 	{
@@ -57,10 +57,10 @@ public class Administrador
 		charlasAdmin.remove(index); //elimina la charla que tiene el index de la charla que quiere eliminar
 	}
 	/**
-	* Agrega a los asistentes a las charlas.
-	*
-	* @param bcharla
-	* @carnet
+	 Agrega a los asistentes a las charlas.
+	
+	 @param bcharla
+	 @param carnet
 	*/
 	public void agregarAsistentes(String bcharla, String carnet) 
 	{ //bcharla representa el nombre de la charla a la que quiere ingresarle la asistencia
@@ -80,18 +80,18 @@ public class Administrador
 		}
 	}
 	/**
-	* Charlas que se encuentran en la ArrayList.
-	*
-	* @return charlasAdmin 	charlas de las lista de administradores.
+	 Charlas que se encuentran en la ArrayList.
+	
+	 @return charlasAdmin 	charlas de las lista de administradores.
 	*/
 	public ArrayList<Charla> mostrarCharlas()
 	{
 		return charlasAdmin;
 	}
 	/**
-	* Alumnos que se encuentran en la ArrayList.
-	*
-	* @return alumnos 	que estan en la lista.
+	 Alumnos que se encuentran en la ArrayList.
+	
+	 @return alumnos 	que estan en la lista.
 	*/
 	public ArrayList<Estudiante> getAlumnos()
 	{
