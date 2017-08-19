@@ -15,19 +15,20 @@ public class Charla
 	private String fecha;
 	private ArrayList<Estudiante> asistentes;
 
-	public Charla(String nombre, String salon, String hora, String fecha)
-	{
+	public Charla(String nombre, String salon, String hora, String fecha){
 		this.nombre = nombre;
 		this.lugar = salon;
 		this.hora = hora;
 		this.fecha = fecha;
+		asistentes = new ArrayList<Estudiante>();
 	}
-	public String getNombre()
-	{
+	
+	public String getNombre(){
 		return nombre;
 	}
-	public ArrayList<Estudiante> getAsistentes()
-	{
+	
+	public ArrayList<Estudiante> getAsistentes(){
 		return asistentes;
 	}
+	
 }
