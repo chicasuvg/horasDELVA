@@ -16,13 +16,20 @@ public class Administrador
 	private int index;
 	protected ArrayList<Estudiante> alumnos;
 	private Charla delva;
-
+	
+	/**
+	* Constructor de objetos para la clase Administrador.
+	*/
 	public Administrador(String usuario, String contrasena)
 	{
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 	}
-
+	/**
+	* Agregar charla a las diferentes ArrayList que se crearon.
+	*
+	* @param delva 	a agregar.
+	*/
 	public void agregarCharla(Charla delva)
 	{
 		charlasAdmin.add(delva);
@@ -31,6 +38,11 @@ public class Administrador
 			estudiante.getCEst().add(delva);
 		}
 	}
+	/**
+	*Eliminar una charla de las que estan en la arrayList.
+	*
+	*@param delva 	a eliminar.
+	*/
 	public void eliminarCharla(String busqueda)
 	{
 		for (Charla delva : charlasAdmin)
@@ -59,10 +71,20 @@ public class Administrador
 			}
 		}
 	}
+	/**
+	* Charlas que se encuentran en la ArrayList.
+	*
+	* @return charlasAdmin 	charlas de las lista de administradores.
+	*/
 	public ArrayList<Charla> mostrarCharlas()
 	{
 		return charlasAdmin;
 	}
+	/**
+	* Alumnos que se encuentran en la ArrayList.
+	*
+	* @return alumnos 	que estan en la lista.
+	*/
 	public ArrayList<Estudiante> getAlumnos()
 	{
 		return alumnos;
