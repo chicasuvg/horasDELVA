@@ -48,7 +48,7 @@ public class Estudiante
 	}
 	/**
 	consultar las charlas que se encuentran en el ArrayList de los estudiantes
-	@param charlasEst
+	@return charlasEst
 	*/
 	public ArrayList<Charla> getCEst()
 	{
