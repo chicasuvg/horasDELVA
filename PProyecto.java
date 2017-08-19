@@ -139,7 +139,7 @@ public class PProyecto
 								if (mas == 2) {c = 1;}
 								break;
 							case 5:
-								control = 0;
+								c=1;
 								break;
 						}
 					}
@@ -180,10 +180,13 @@ public class PProyecto
 								if (mas == 2) {c2 = 1;}
 								break;
 							case 3:
-								control =0;
+								c2 =1;
 								break;
 						}
 					}
+					break;
+				case 4:
+					control=1;
 					break;
 			}	
 		}
