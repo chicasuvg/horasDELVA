@@ -19,6 +19,8 @@ public class Administrador
 	
 	/**
 	* Constructor de objetos para la clase Administrador.
+	* @param usuario
+	* @param contrasena
 	*/
 	public Administrador(String usuario, String contrasena)
 	{
@@ -41,7 +43,7 @@ public class Administrador
 	/**
 	*Eliminar una charla de las que estan en la arrayList.
 	*
-	*@param delva 	a eliminar.
+	*@param busqueda 	a eliminar.
 	*/
 	public void eliminarCharla(String busqueda)
 	{
@@ -53,7 +55,13 @@ public class Administrador
 				}
 			}
 		charlasAdmin.remove(index); //elimina la charla que tiene el index de la charla que quiere eliminar
-	}	
+	}
+	/**
+	* Agrega a los asistentes a las charlas.
+	*
+	* @param bcharla
+	* @carnet
+	*/
 	public void agregarAsistentes(String bcharla, String carnet) 
 	{ //bcharla representa el nombre de la charla a la que quiere ingresarle la asistencia
 		for (Charla delva: charlasAdmin)
