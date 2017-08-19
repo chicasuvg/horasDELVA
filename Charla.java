@@ -20,7 +20,7 @@ public class Charla
 		this.lugar = salon;
 		this.hora = hora;
 		this.fecha = fecha;
-		asistentes = new ArrayList<Estudiante>();
+		
 	}
 	
 	public String getNombre(){
