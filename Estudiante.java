@@ -16,7 +16,13 @@ public class Estudiante
 	protected int horasDone;
 	private long carnet;
 	private ArrayList<Charla> charlasEst;
-
+	
+	/**
+	 Constructor para la clase de Estudiante
+	
+	 @param usuario
+	 @param constrasena
+	*/
 
 	public Estudiante(String usuario, String contrasena)
 	{
@@ -24,14 +30,26 @@ public class Estudiante
 		this.contrasena = contrasena;
 		this.horasDone = 0;
 	}
+	/**
+	consultar el usuario
+	@return usuario
+	*/
 	public String getNombre()
 	{
 		return usuario;
 	}
+	/**
+	consultar las horas delva hechas
+	@return horasDone
+	*/
 	public int getHoras()
 	{
 		return horasDone;
 	}
+	/**
+	consultar las charlas que se encuentran en el ArrayList de los estudiantes
+	@param charlasEst
+	*/
 	public ArrayList<Charla> getCEst()
 	{
 		return charlasEst;
