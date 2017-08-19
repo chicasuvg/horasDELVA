@@ -1,5 +1,7 @@
 /** 
 @author Ana Lucia Hernandez. 17138.
+Cindy Antillon. 14581.
+Andrea Arguello. 17801.
 @proposito  modela la informacion del estudiante UVG que - potencialmente - asistira a una charla
 @since 04/08/2017
 Estudiante.java
