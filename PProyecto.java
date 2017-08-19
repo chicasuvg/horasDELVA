@@ -88,7 +88,7 @@ public class PProyecto
 								String hora = teclado.nextLine();
 								out.println("Ingrese el lugar (salon) de la charla: ");
 								String salon = teclado.nextLine();
-								delva = new Charla(nombrec, salon, hora, fecha);
+								delva = new Charla(nombrec, fecha, hora, salon);
 								administrador.agregarCharla(delva);
 								out.println("\nDesea hacer algo mas? \n 1. Si \n 2. No."); // esta opcion es para que el usuario decida si quiere
 								//hacer algo mas en el programa o si se quiere salir
