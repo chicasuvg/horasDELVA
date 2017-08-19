@@ -129,7 +129,7 @@ public class PProyecto
 									}
 									else
 									{
-										control =1;
+										ciclo =1;
 									}
 								}
 								out.println("\nDesea hacer algo mas? \n 1. Si \n 2. No."); // esta opcion es para que el usuario decida si quiere
