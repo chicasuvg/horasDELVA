@@ -7,7 +7,7 @@ package HorasDelva;
 
 /**
  *
- * @author Ana
+ * @author Ana Lucia Hernandez (17138). Andrea Arguello (17801). Cindy Antillon (14581)
  */
 public class HorasDelvaUI extends javax.swing.JFrame {
 
