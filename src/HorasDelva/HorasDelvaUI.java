@@ -450,6 +450,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        
         if (registro.verificacionIngreso(ingresoUsuario.getText(), ingresoContrasena.getText()) == true)
         {
             if (registro.getAccesoAdmin() == true)

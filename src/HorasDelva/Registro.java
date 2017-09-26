@@ -20,10 +20,12 @@ public class Registro {
     {
         administradores = new ArrayList<>();
         estudiantes = new ArrayList<>();
-        String[] nombresUsuarios = {"arg17801", "ant17581"};
+        String[] nombresUsuarios = {"arg17801", "ant14581"};
         String[] contrasenas = {"1234", "1234"};
-        Estudiante andrea = new Estudiante(nombresUsuarios[0], contrasenas[0]);
         Administrador cindy = new Administrador(nombresUsuarios[1], contrasenas[1]);
+        Estudiante andrea = new Estudiante(nombresUsuarios[0], contrasenas[0]);
+        administradores.add(cindy);
+        estudiantes.add(andrea);
         acceso = false;
     }
     /**
@@ -56,7 +58,7 @@ public class Registro {
     {
         for(Estudiante estudiante: estudiantes)
         {
-            if(nombreUsuario.equals(estudiante.getNombre()) && contrasena.equals(estudiante.getContrasena()))
+            if(estudiante.getNombre().equals(nombreUsuario) && estudiante.getContrasena().equals(contrasena))
             {
                 acceso = true;
                 student = true;
@@ -64,7 +66,7 @@ public class Registro {
         }
         for(Administrador administrador: administradores)
         {
-            if(nombreUsuario.equals(administrador.getNombre()) && contrasena.equals(administrador.getContrasena()))
+            if(administrador.getNombre().equals(nombreUsuario) && administrador.getContrasena().equals(contrasena))
             {
                 acceso = true;
                 admin = true;
