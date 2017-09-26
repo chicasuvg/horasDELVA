@@ -6,14 +6,14 @@
 @proposito  modela la informacion del estudiante UVG que - potencialmente - asistira a una charla
 Estudiante.java
 */
-
+package HorasDelva;
 import java.util.ArrayList;
 
 public class Estudiante
 {
     private String usuario;
     private String contrasena;
-    protected int horasDone;
+    private int horasDone;
     private long carnet;
     private ArrayList<Charla> charlasEst;
 
@@ -39,5 +39,9 @@ public class Estudiante
     public ArrayList<Charla> getCEst()
     {
             return charlasEst;
+    }
+    public void addHoras(int hora)
+    {
+        this.horasDone += hora;
     }
 }

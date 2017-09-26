@@ -3,6 +3,7 @@
  * Andrea Arguello (17801) 
  * Cindy Antillon (14581)
  * @since 04/08/2017
+ * Registro.java
  */
 package HorasDelva;
 
@@ -17,8 +18,8 @@ public class Registro {
     
     public Registro()//se tendra un usuario admistrador predeterminado y un usuario estudiante predeterminado
     {
-        administradores = new ArrayList<Administrador>();
-        estudiantes = new ArrayList<Estudiante>();
+        administradores = new ArrayList<>();
+        estudiantes = new ArrayList<>();
         String[] nombresUsuarios = {"arg17801", "ant17581"};
         String[] contrasenas = {"1234", "1234"};
         Estudiante andrea = new Estudiante(nombresUsuarios[0], contrasenas[0]);
@@ -51,7 +52,7 @@ public class Registro {
      * @param nombreUsuario: el nombre de la cuenta
      * @param contrasena: la contrasena de la cuenta
      */
-    public void verificacionIngreso(String nombreUsuario, String contrasena)
+    public boolean verificacionIngreso(String nombreUsuario, String contrasena)
     {
         for(Estudiante estudiante: estudiantes)
         {
@@ -69,6 +70,22 @@ public class Registro {
                 admin = true;
             }
         }
+        return this.acceso;
     }
-    
+    public ArrayList<Administrador> usuarioAdmin()
+    {
+        return administradores;
+    }
+    public ArrayList<Estudiante> usuarioEst()
+    {
+        return estudiantes;
+    }
+    public boolean getAccesoEst()
+    {
+        return student;
+    }
+    public boolean getAccesoAdmin()
+    {
+        return admin;
+    }
 }

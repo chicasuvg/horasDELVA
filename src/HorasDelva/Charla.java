@@ -6,7 +6,7 @@
  * @proposito  modela la informacion de una charla DELVA
 Charla.java
 */
-
+package HorasDelva;
 import java.util.ArrayList;
 
 public class Charla
