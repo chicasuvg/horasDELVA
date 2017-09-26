@@ -21,7 +21,14 @@ public class Administrador
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 	}
-
+        public String getNombre()
+        {
+            return usuario;
+        }
+        public String getContrasena()
+        {
+            return contrasena;
+        }
 	public void agregarCharla(Charla delva)
 	{
 		charlasAdmin.add(delva);

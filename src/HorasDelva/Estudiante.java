@@ -26,6 +26,10 @@ public class Estudiante
 	{
 		return usuario;
 	}
+        public String getContrasena()
+        {
+            return contrasena;
+        }
 	public int getHoras()
 	{
 		return horasDone;
