@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Ana Lucia Hernandez (17138)
+ * Andrea Arguello (17801) 
+ * Cindy Antillon (14581)
+ * @since 04/08/2017
  */
 package HorasDelva;
 
-/**
- *
- * @author Ana
- */
 import java.util.ArrayList;
 
 public class Registro {
     private ArrayList<Administrador> administradores;
     private ArrayList<Estudiante> estudiantes;
     private boolean acceso;
-    private boolean estudiante;
+    private boolean student;
     private boolean admin;
     
     public Registro()//se tendra un usuario admistrador predeterminado y un usuario estudiante predeterminado
@@ -48,6 +45,12 @@ public class Registro {
             estudiantes.add(nuevo);
         }
     }
+    /**
+     * Metodo que verifica si el usuario existe dentro de la base de datos, para poder ingresar a la plataforma de 
+     * un usuario determinado.
+     * @param nombreUsuario: el nombre de la cuenta
+     * @param contrasena: la contrasena de la cuenta
+     */
     public void verificacionIngreso(String nombreUsuario, String contrasena)
     {
         for(Estudiante estudiante: estudiantes)
@@ -55,6 +58,7 @@ public class Registro {
             if(nombreUsuario.equals(estudiante.getNombre()) && contrasena.equals(estudiante.getContrasena()))
             {
                 acceso = true;
+                student = true;
             }
         }
         for(Administrador administrador: administradores)
@@ -62,6 +66,7 @@ public class Registro {
             if(nombreUsuario.equals(administrador.getNombre()) && contrasena.equals(administrador.getContrasena()))
             {
                 acceso = true;
+                admin = true;
             }
         }
     }

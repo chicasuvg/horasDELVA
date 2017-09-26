@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Ana Lucia Hernandez (17138)
+ * Andrea Arguello (17801) 
+ * Cindy Antillon (14581)
+ * @since 04/08/2017
  */
 package HorasDelva;
 
@@ -10,7 +11,6 @@ package HorasDelva;
  * @author Ana Lucia Hernandez (17138). Andrea Arguello (17801). Cindy Antillon (14581)
  */
 public class HorasDelvaUI extends javax.swing.JFrame {
-
     /**
      * Creates new form HorasDelvaUI
      */
