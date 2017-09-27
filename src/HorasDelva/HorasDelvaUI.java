@@ -20,6 +20,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
      * Creates new form HorasDelvaUI
      */
     Registro registro;
+    Administrador admin; 
+    
     public HorasDelvaUI() {
         
         initComponents();
@@ -52,8 +54,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         AClugar = new javax.swing.JTextField();
         ACfecha = new javax.swing.JTextField();
         AChora = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        newCharla = new javax.swing.JButton();
+        borrar = new javax.swing.JButton();
         PPeliminarCharla = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -71,6 +73,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         PPmostrarCharla = new javax.swing.JDialog();
         ingresoEst = new javax.swing.JDialog();
         crearUsuario = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        CUtipo = new javax.swing.JComboBox<>();
+        CUnombre = new javax.swing.JTextField();
+        CUcont = new javax.swing.JTextField();
+        CUnew = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ingresoUsuario = new javax.swing.JTextField();
@@ -84,12 +94,32 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jLabel3.setText("¿Qué desea hacer?");
 
         agregarCharla.setText("Agregar charla");
+        agregarCharla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarCharlaActionPerformed(evt);
+            }
+        });
 
         eliminarCharla.setText("Eliminar charla");
+        eliminarCharla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarCharlaActionPerformed(evt);
+            }
+        });
 
         agregarAsistente.setText("Agregar asistencias");
+        agregarAsistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarAsistenteActionPerformed(evt);
+            }
+        });
 
         mostrarCharla.setText("Mostrar charlas");
+        mostrarCharla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarCharlaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -145,9 +175,19 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         jLabel7.setText("Hora de charla");
 
-        jButton1.setText("Agregar ");
+        newCharla.setText("Agregar ");
+        newCharla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCharlaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Borrar datos");
+        borrar.setText("Borrar datos");
+        borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -169,9 +209,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jButton1)
+                .addComponent(newCharla)
                 .addGap(51, 51, 51)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -195,8 +235,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                     .addComponent(AChora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(newCharla)
+                    .addComponent(borrar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -221,6 +261,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jLabel12.setText("Nombre de charla");
 
         eliminarDELVA.setText("Eliminar charla");
+        eliminarDELVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarDELVAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -281,6 +326,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jLabel10.setText("Número de carnet del estudiante (ejemplo: ord89156)");
 
         ingresarAsistencia.setText("Agregar Asistencia");
+        ingresarAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarAsistenciaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -364,15 +414,84 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CREAR USUARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Marlett", 1, 13))); // NOI18N
+
+        jLabel13.setText("Ingrese el tipo de usuario que desea crear");
+
+        jLabel14.setText("Ingrese el nombre de usuario");
+
+        jLabel15.setText("Ingrese la contraseña del nuevo usuario");
+
+        CUtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Estudiante" }));
+
+        CUnew.setText("Crear Usuario");
+        CUnew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CUnewActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(CUcont, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(48, 48, 48)
+                                .addComponent(CUnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(CUtipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(CUnew)))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(CUtipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(CUnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(CUcont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(CUnew)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout crearUsuarioLayout = new javax.swing.GroupLayout(crearUsuario.getContentPane());
         crearUsuario.getContentPane().setLayout(crearUsuarioLayout);
         crearUsuarioLayout.setHorizontalGroup(
             crearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(crearUsuarioLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         crearUsuarioLayout.setVerticalGroup(
             crearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(crearUsuarioLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -472,6 +591,64 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         crearUsuario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void newCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCharlaActionPerformed
+        String nombre = ACnombre.getText();
+        String salon = AClugar.getText();
+        String hora = AChora.getText();
+        String fecha = ACfecha.getText();
+        Charla nueva = new Charla(nombre.toUpperCase(), salon, hora, fecha);
+        admin.agregarCharla(nueva);
+        ACnombre.setText("");
+        ACfecha.setText("");
+        AClugar.setText("");
+        AChora.setText("");
+    }//GEN-LAST:event_newCharlaActionPerformed
+
+    private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
+        ACnombre.setText("");
+        ACfecha.setText("");
+        AClugar.setText("");
+        AChora.setText("");
+    }//GEN-LAST:event_borrarActionPerformed
+
+    private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
+        String nombre = ECnombre.getText();
+        admin.eliminarCharla(nombre);
+    }//GEN-LAST:event_eliminarDELVAActionPerformed
+
+    private void ingresarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarAsistenciaActionPerformed
+        String carnet = AAcarnet.getText();
+        String nombrec = AAnombre.getText();
+        admin.agregarAsistentes(nombrec, carnet);
+        if(admin.getExistente() == false)
+        {
+            JOptionPane.showMessageDialog(null, "El carnet que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ingresarAsistenciaActionPerformed
+
+    private void CUnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CUnewActionPerformed
+        String tipoUsuario = String.valueOf(CUtipo.getSelectedItem());
+        String newnombre = CUnombre.getText();
+        String newcont = CUcont.getText();
+        registro.crearUsuario(tipoUsuario, newnombre, newcont);
+    }//GEN-LAST:event_CUnewActionPerformed
+
+    private void eliminarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCharlaActionPerformed
+        PPeliminarCharla.setVisible(true);
+    }//GEN-LAST:event_eliminarCharlaActionPerformed
+
+    private void mostrarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarCharlaActionPerformed
+        PPmostrarCharla.setVisible(true);
+    }//GEN-LAST:event_mostrarCharlaActionPerformed
+
+    private void agregarAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAsistenteActionPerformed
+        PPaddAsistente.setVisible(true);
+    }//GEN-LAST:event_agregarAsistenteActionPerformed
+
+    private void agregarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCharlaActionPerformed
+        PPagregarCharla.setVisible(true);
+    }//GEN-LAST:event_agregarCharlaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -514,6 +691,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JTextField AChora;
     private javax.swing.JTextField AClugar;
     private javax.swing.JTextField ACnombre;
+    private javax.swing.JTextField CUcont;
+    private javax.swing.JButton CUnew;
+    private javax.swing.JTextField CUnombre;
+    private javax.swing.JComboBox<String> CUtipo;
     private javax.swing.JTextField ECnombre;
     private javax.swing.JDialog PPaddAsistente;
     private javax.swing.JDialog PPagregarCharla;
@@ -521,6 +702,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JDialog PPmostrarCharla;
     private javax.swing.JButton agregarAsistente;
     private javax.swing.JButton agregarCharla;
+    private javax.swing.JButton borrar;
     private javax.swing.JButton botonIngresar;
     private javax.swing.JDialog crearUsuario;
     private javax.swing.JButton eliminarCharla;
@@ -530,13 +712,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JTextField ingresoContrasena;
     private javax.swing.JDialog ingresoEst;
     private javax.swing.JTextField ingresoUsuario;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -550,6 +733,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JButton mostrarCharla;
+    private javax.swing.JButton newCharla;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ public class Administrador
     private String contrasena;
     private ArrayList<Charla> charlasAdmin;
     private ArrayList<Estudiante> alumnos;
+    private boolean existente; //para ver si un estudiante existe en la base de datos o no.
 
     public Administrador(String usuario, String contrasena)
     {
@@ -23,6 +24,11 @@ public class Administrador
         this.contrasena = contrasena;
         charlasAdmin = new ArrayList<>();
         alumnos = new ArrayList<>();
+        existente = true;
+    }
+    public boolean getExistente()
+    {
+        return existente;
     }
     /**
      * Para obtener el nombre de usuario del administrador
@@ -86,6 +92,10 @@ public class Administrador
                         estudiante.addHoras(1); //agregarle al estudiante las horas que cumplio
                         delva.getAsistentes().add(estudiante); //para agregar a la lista de asistentes al estudiante
                     }
+                    else
+                    {
+                        existente = false;
+                    }
                 }
             }
         }
@@ -105,6 +115,10 @@ public class Administrador
     public ArrayList<Estudiante> getAlumnos()
     {
         return alumnos;
+    }
+    public void setCharlas(ArrayList<Charla> charlas)
+    {
+        charlasAdmin = charlas;
     }
 	
 }

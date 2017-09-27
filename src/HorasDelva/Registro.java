@@ -12,12 +12,14 @@ import java.util.ArrayList;
 public class Registro {
     private ArrayList<Administrador> administradores;
     private ArrayList<Estudiante> estudiantes;
+    private ArrayList<Charla> listaCharlas;
     private boolean acceso;
     private boolean student;
     private boolean admin;
     
     public Registro()//se tendra un usuario admistrador predeterminado y un usuario estudiante predeterminado
     {
+        listaCharlas = new ArrayList<>();
         administradores = new ArrayList<>();
         estudiantes = new ArrayList<>();
         String[] nombresUsuarios = {"arg17801", "ant14581"};
@@ -40,12 +42,19 @@ public class Registro {
         if(tipoUsuario.equals("Administrador"))
         {
             Administrador nuevo = new Administrador(nombreUsuario, contrasena);
+            nuevo.setCharlas(listaCharlas); //para que el nuevo administrador tenga acceso a todas las charlas previamente ingresadas
             administradores.add(nuevo);
+            
         }
         if (tipoUsuario.equals("Estudiante"))
         {
             Estudiante nuevo = new Estudiante(nombreUsuario, contrasena);
             estudiantes.add(nuevo);
+            for(Administrador admin : administradores)
+            {
+                admin.getAlumnos().add(nuevo);//para que todos los administradores tengan la misma lista de estudiantes.
+            }
+            
         }
     }
     /**
@@ -70,6 +79,7 @@ public class Registro {
             {
                 acceso = true;
                 admin = true;
+                listaCharlas = administrador.mostrarCharlas();
             }
         }
         return this.acceso;

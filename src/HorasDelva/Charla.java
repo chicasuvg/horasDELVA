@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Charla
 {
-    private String nombre;
+    private String nombre; //el nombre de la charla siempre ira en mayusculas
     private String lugar;
     private String hora;
     private String fecha;
