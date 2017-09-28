@@ -67,7 +67,7 @@ public class Administrador
         int index =0;
         for (Charla delva : charlasAdmin)
         {
-            if (delva.getNombre().equals(busqueda))
+            if (delva.getNombre().equals(busqueda.toUpperCase()))
             {
                 index = charlasAdmin.indexOf(delva);
             }
@@ -89,7 +89,8 @@ public class Administrador
                 {
                     if (estudiante.getNombre().contains(carnet))
                     {
-                        estudiante.addHoras(1); //agregarle al estudiante las horas que cumplio
+                        int hora=delva.getDuracion();
+                        estudiante.addHoras(hora); //agregarle al estudiante las horas que cumplio
                         delva.getAsistentes().add(estudiante); //para agregar a la lista de asistentes al estudiante
                     }
                     else

@@ -16,13 +16,15 @@ public class Charla
     private String hora;
     private String fecha;
     private ArrayList<Estudiante> asistentes;
+    private int duracion;
 
-    public Charla(String nombre, String salon, String hora, String fecha)
+    public Charla(String nombre, String salon, String hora, String fecha, int duracion)
     {
             this.nombre = nombre;
             this.lugar = salon;
             this.hora = hora;
             this.fecha = fecha;
+            this.duracion=duracion;
     }
     public String getNombre()
     {
@@ -43,5 +45,8 @@ public class Charla
         hilo += "\nHora: "+hora;
         hilo += "\nFecha: "+ fecha;
         return hilo;
+    }
+    public int getDuracion(){
+        return duracion;
     }
 }

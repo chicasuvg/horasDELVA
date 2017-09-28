@@ -58,6 +58,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         newCharla = new javax.swing.JButton();
         borrar = new javax.swing.JButton();
         ACcalendar = new com.toedter.calendar.JDateChooser();
+        jLabel18 = new javax.swing.JLabel();
+        ACduracion = new javax.swing.JTextField();
         PPeliminarCharla = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -81,6 +83,13 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         MCcalendar = new com.toedter.calendar.JDateChooser();
         ingresoEst = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        horasCumplidas = new javax.swing.JTextField();
+        estudianteDate = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        estudianteVCharlas = new javax.swing.JTextArea();
+        jb_buscar = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
         crearUsuario = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -198,6 +207,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setText("Duracion de charla");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -221,8 +232,13 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(newCharla)
                         .addGap(51, 51, 51)
-                        .addComponent(borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, Short.MAX_VALUE))
+                        .addComponent(borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ACduracion)))
+                .addGap(55, 55, 55))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,11 +263,15 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                         .addComponent(AClugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(AChora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newCharla)
-                    .addComponent(borrar))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jLabel18)
+                    .addComponent(ACduracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(borrar)
+                    .addComponent(newCharla))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PPagregarCharlaLayout = new javax.swing.GroupLayout(PPagregarCharla.getContentPane());
@@ -261,17 +281,15 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             .addGroup(PPagregarCharlaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         PPagregarCharlaLayout.setVerticalGroup(
             PPagregarCharlaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PPagregarCharlaLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-
-        PPeliminarCharla.setPreferredSize(new java.awt.Dimension(403, 214));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ADMINISTRADOR", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Marlett", 0, 18))); // NOI18N
 
@@ -477,26 +495,84 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ESTUDIANTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+        jLabel16.setText("Horas DELVA cumplidas:");
+
+        horasCumplidas.setEditable(false);
+        horasCumplidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horasCumplidasActionPerformed(evt);
+            }
+        });
+
+        estudianteVCharlas.setColumns(20);
+        estudianteVCharlas.setRows(5);
+        jScrollPane2.setViewportView(estudianteVCharlas);
+
+        jb_buscar.setText("Buscar fecha");
+        jb_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_buscarActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Buscar charlas por fecha:");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel19))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(estudianteDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(horasCumplidas, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jb_buscar)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(horasCumplidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(estudianteDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_buscar))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ingresoEstLayout = new javax.swing.GroupLayout(ingresoEst.getContentPane());
         ingresoEst.getContentPane().setLayout(ingresoEstLayout);
         ingresoEstLayout.setHorizontalGroup(
             ingresoEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(ingresoEstLayout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         ingresoEstLayout.setVerticalGroup(
             ingresoEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(ingresoEstLayout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CREAR USUARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Marlett", 1, 13))); // NOI18N
@@ -664,8 +740,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
             if(registro.getAccesoEst() == true)
             {
-                ingresoAdmin.pack();
+                ingresoEst.pack();
                 ingresoEst.setVisible(true);
+                horasCumplidas.setText(String.valueOf(registro.getEstudiante().getHoras()));
             }
         }
         else
@@ -685,11 +762,13 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         String hora = AChora.getText();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String fecha = df.format(ACcalendar.getDate());
-        Charla nueva = new Charla(nombre.toUpperCase(), salon, hora, fecha);
+        int duracion = Integer.parseInt(ACduracion.getText());
+        Charla nueva = new Charla(nombre.toUpperCase(), salon, hora, fecha, duracion);
         registro.getAdministrador().agregarCharla(nueva);
         ACnombre.setText("");
         AClugar.setText("");
         AChora.setText("");
+        ACduracion.setText("");
         
     }//GEN-LAST:event_newCharlaActionPerformed
 
@@ -756,6 +835,25 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         MCinfoCharla.setText(info);
     }//GEN-LAST:event_MCverCharlasActionPerformed
 
+    private void horasCumplidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horasCumplidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horasCumplidasActionPerformed
+
+    private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
+        // TODO add your handling code here:
+        DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha = date.format(estudianteDate.getDate());
+        String info = "";
+        for (Charla charla : registro.getCharlas())
+        {
+            if(charla.getFecha().equals(fecha))
+            {
+                info += "\n"+ charla.toString();
+            }
+        }
+        estudianteVCharlas.setText(info);
+    }//GEN-LAST:event_jb_buscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -795,6 +893,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JTextField AAcarnet;
     private javax.swing.JTextField AAnombre;
     private com.toedter.calendar.JDateChooser ACcalendar;
+    private javax.swing.JTextField ACduracion;
     private javax.swing.JTextField AChora;
     private javax.swing.JTextField AClugar;
     private javax.swing.JTextField ACnombre;
@@ -817,6 +916,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JDialog crearUsuario;
     private javax.swing.JButton eliminarCharla;
     private javax.swing.JButton eliminarDELVA;
+    private com.toedter.calendar.JDateChooser estudianteDate;
+    private javax.swing.JTextArea estudianteVCharlas;
+    private javax.swing.JTextField horasCumplidas;
     private javax.swing.JButton ingresarAsistencia;
     private javax.swing.JDialog ingresoAdmin;
     private javax.swing.JPasswordField ingresoContrasena;
@@ -830,7 +932,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -848,6 +953,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton jb_buscar;
     private javax.swing.JButton mostrarCharla;
     private javax.swing.JButton newCharla;
     // End of variables declaration//GEN-END:variables

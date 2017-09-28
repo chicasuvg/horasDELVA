@@ -74,6 +74,7 @@ public class Registro {
             {
                 acceso = true;
                 student = true;
+                admin = false;
                 usuarioEst = estudiante; 
             }
         }
@@ -83,6 +84,7 @@ public class Registro {
             {
                 acceso = true;
                 admin = true;
+                student = false;
                 listaCharlas = administrador.mostrarCharlas();
                 usuarioAdmin = administrador;
             }
