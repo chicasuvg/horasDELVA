@@ -80,6 +80,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         MCverCharlas = new javax.swing.JButton();
         MCcalendar = new com.toedter.calendar.JDateChooser();
         ingresoEst = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
         crearUsuario = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -269,6 +270,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        PPeliminarCharla.setPreferredSize(new java.awt.Dimension(403, 214));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ADMINISTRADOR", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Marlett", 0, 18))); // NOI18N
 
@@ -474,15 +477,26 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout ingresoEstLayout = new javax.swing.GroupLayout(ingresoEst.getContentPane());
         ingresoEst.getContentPane().setLayout(ingresoEstLayout);
         ingresoEstLayout.setHorizontalGroup(
             ingresoEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         ingresoEstLayout.setVerticalGroup(
             ingresoEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CREAR USUARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Marlett", 1, 13))); // NOI18N
@@ -645,10 +659,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         {
             if (registro.getAccesoAdmin() == true)
             {
+                ingresoAdmin.pack();
                 ingresoAdmin.setVisible(true);
             }
             if(registro.getAccesoEst() == true)
             {
+                ingresoAdmin.pack();
                 ingresoEst.setVisible(true);
             }
         }
@@ -659,6 +675,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        crearUsuario.pack();
         crearUsuario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -705,19 +722,23 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CUnewActionPerformed
 
     private void eliminarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCharlaActionPerformed
+        PPeliminarCharla.pack();
         PPeliminarCharla.setVisible(true);
     }//GEN-LAST:event_eliminarCharlaActionPerformed
 
     private void mostrarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarCharlaActionPerformed
+        PPmostrarCharla.pack();
         PPmostrarCharla.setVisible(true);
         
     }//GEN-LAST:event_mostrarCharlaActionPerformed
 
     private void agregarAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAsistenteActionPerformed
+        PPaddAsistente.pack();
         PPaddAsistente.setVisible(true);
     }//GEN-LAST:event_agregarAsistenteActionPerformed
 
     private void agregarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCharlaActionPerformed
+        PPagregarCharla.pack();
         PPagregarCharla.setVisible(true);
     }//GEN-LAST:event_agregarCharlaActionPerformed
 
@@ -825,6 +846,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mostrarCharla;
     private javax.swing.JButton newCharla;
