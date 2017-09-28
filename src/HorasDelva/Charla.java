@@ -28,8 +28,20 @@ public class Charla
     {
             return nombre;
     }
+    public String getFecha()
+    {
+        return fecha;
+    }
     public ArrayList<Estudiante> getAsistentes()
     {
             return asistentes;
+    }
+    public String toString()
+    {
+        String hilo = "Nombre charla: "+ nombre;
+        hilo += "\nLugar: " +lugar;
+        hilo += "\nHora: "+hora;
+        hilo += "\nFecha: "+ fecha;
+        return hilo;
     }
 }

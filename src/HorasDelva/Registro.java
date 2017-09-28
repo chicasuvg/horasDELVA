@@ -10,8 +10,10 @@ package HorasDelva;
 import java.util.ArrayList;
 
 public class Registro {
-    private ArrayList<Administrador> administradores;
-    private ArrayList<Estudiante> estudiantes;
+    private Estudiante usuarioEst;//usuario que actualmente esta activo (para cuando inicie sesion)
+    private Administrador usuarioAdmin; //usuario que actualmente esta activo (para cuando inicie sesion)
+    private ArrayList<Administrador> administradores; //lista de administradores de UVG Delvas
+    private ArrayList<Estudiante> estudiantes; // lista de estudiantes de UVG
     private ArrayList<Charla> listaCharlas;
     private boolean acceso;
     private boolean student;
@@ -19,6 +21,7 @@ public class Registro {
     
     public Registro()//se tendra un usuario admistrador predeterminado y un usuario estudiante predeterminado
     {
+        
         listaCharlas = new ArrayList<>();
         administradores = new ArrayList<>();
         estudiantes = new ArrayList<>();
@@ -71,6 +74,7 @@ public class Registro {
             {
                 acceso = true;
                 student = true;
+                usuarioEst = estudiante; 
             }
         }
         for(Administrador administrador: administradores)
@@ -80,6 +84,7 @@ public class Registro {
                 acceso = true;
                 admin = true;
                 listaCharlas = administrador.mostrarCharlas();
+                usuarioAdmin = administrador;
             }
         }
         return this.acceso;
@@ -92,6 +97,10 @@ public class Registro {
     {
         return estudiantes;
     }
+    public ArrayList<Charla> getCharlas()
+    {
+        return listaCharlas;
+    }
     public boolean getAccesoEst()
     {
         return student;
@@ -99,5 +108,13 @@ public class Registro {
     public boolean getAccesoAdmin()
     {
         return admin;
+    }
+    public Administrador getAdministrador()
+    {
+        return usuarioAdmin;
+    }
+    public Estudiante getEstudiante()
+    {
+        return usuarioEst;
     }
 }
