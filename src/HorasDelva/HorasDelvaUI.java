@@ -46,6 +46,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         eliminarCharla = new javax.swing.JButton();
         agregarAsistente = new javax.swing.JButton();
         mostrarCharla = new javax.swing.JButton();
+        verAsistentes = new javax.swing.JButton();
         PPagregarCharla = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -139,21 +140,33 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         });
 
+        verAsistentes.setText("Ver asistentes a una charla");
+        verAsistentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verAsistentesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(agregarCharla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eliminarCharla)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(agregarAsistente, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                    .addComponent(mostrarCharla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(agregarCharla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eliminarCharla)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(agregarAsistente, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(mostrarCharla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(verAsistentes)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,7 +182,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eliminarCharla)
                     .addComponent(mostrarCharla))
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(verAsistentes)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout ingresoAdminLayout = new javax.swing.GroupLayout(ingresoAdmin.getContentPane());
@@ -780,17 +795,25 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
         String nombre = ECnombre.getText();
-        registro.getAdministrador().eliminarCharla(nombre);
+        if(registro.buscarCharla(nombre)==false)
+        {
+            JOptionPane.showMessageDialog(null, "La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else{registro.getAdministrador().eliminarCharla(nombre);}
     }//GEN-LAST:event_eliminarDELVAActionPerformed
 
     private void ingresarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarAsistenciaActionPerformed
         String carnet = AAcarnet.getText();
-        String nombrec = AAnombre.getText();
-        registro.getAdministrador().agregarAsistentes(nombrec, carnet);
-        if(registro.getAdministrador().getExistente() == false)
+        String nombrec = AAnombre.getText().toUpperCase();
+        if(registro.buscarEstudiante(carnet) == false)
         {
             JOptionPane.showMessageDialog(null, "El carnet que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
         }
+        if(registro.buscarCharla(nombrec)==false)
+        {
+            JOptionPane.showMessageDialog(null, "La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else{registro.getAdministrador().agregarAsistentes(nombrec, carnet);}
     }//GEN-LAST:event_ingresarAsistenciaActionPerformed
 
     private void CUnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CUnewActionPerformed
@@ -853,6 +876,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         }
         estudianteVCharlas.setText(info);
     }//GEN-LAST:event_jb_buscarActionPerformed
+
+    private void verAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verAsistentesActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_verAsistentesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -957,5 +985,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JButton jb_buscar;
     private javax.swing.JButton mostrarCharla;
     private javax.swing.JButton newCharla;
+    private javax.swing.JButton verAsistentes;
     // End of variables declaration//GEN-END:variables
 }

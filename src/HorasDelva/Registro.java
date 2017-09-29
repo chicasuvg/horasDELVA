@@ -99,6 +99,19 @@ public class Registro {
     {
         return estudiantes;
     }
+    public boolean buscarEstudiante(String carnet)
+    {
+        boolean existe=false;
+        for(Estudiante estudiante: estudiantes)
+        {
+            if(estudiante.getNombre().equals(carnet))
+            {
+                existe=true;
+            }
+            else{existe=false;}
+        }
+        return existe;
+    }
     public ArrayList<Charla> getCharlas()
     {
         return listaCharlas;
@@ -118,5 +131,14 @@ public class Registro {
     public Estudiante getEstudiante()
     {
         return usuarioEst;
+    }
+    public boolean buscarCharla(String nombre)
+    {   boolean existe=false;
+        for(Charla charla: listaCharlas){
+            if(charla.getNombre().equals(nombre)){
+                existe=true;
+            }
+        }
+        return existe;
     }
 }

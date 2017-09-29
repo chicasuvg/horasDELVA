@@ -44,6 +44,7 @@ public class Charla
         hilo += "\nLugar: " +lugar;
         hilo += "\nHora: "+hora;
         hilo += "\nFecha: "+ fecha;
+        hilo += "\nDuracion: " + duracion;
         return hilo;
     }
     public int getDuracion(){
