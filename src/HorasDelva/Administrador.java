@@ -26,6 +26,10 @@ public class Administrador
         alumnos = new ArrayList<>();
         existente = true;
     }
+    /**
+     * Para obtener si el estudiante ingresado existe o no 
+     * @return arraylist de estudiantes
+     */
     public boolean getExistente()
     {
         return existente;
@@ -117,6 +121,11 @@ public class Administrador
     {
         return alumnos;
     }
+    /**
+     * Se utilizara para que todos los administradores tengan las mismas charlas (todas las charlas se guardarán en el array 
+     * de charlas de Registro, de ahí las jalará).
+     * @param charlas: lista de charlas que se quieren poner como la del administrador 
+     */
     public void setCharlas(ArrayList<Charla> charlas)
     {
         charlasAdmin = charlas;

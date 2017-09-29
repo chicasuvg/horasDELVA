@@ -15,6 +15,7 @@ public class Registro {
     private ArrayList<Administrador> administradores; //lista de administradores de UVG Delvas
     private ArrayList<Estudiante> estudiantes; // lista de estudiantes de UVG
     private ArrayList<Charla> listaCharlas;
+    private boolean existente;
     private boolean acceso;
     private boolean student;
     private boolean admin;
