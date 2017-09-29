@@ -139,7 +139,24 @@ public class Registro {
             if(charla.getNombre().equals(nombre)){
                 existe=true;
             }
+            else{existe=false;}
         }
         return existe;
     }
+    public boolean buscarAsistente(String carnet)
+    { boolean existe=false;
+        for(Charla delva : listaCharlas)
+        {
+            for (Estudiante estudiante: delva.getAsistentes())
+            {
+                if(estudiante.getNombre().equals(carnet))
+                {
+                    existe=true;
+                }
+                else{existe=false;}
+            }
+        }
+        return existe;
+    }
+   
 }

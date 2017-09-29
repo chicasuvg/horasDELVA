@@ -18,33 +18,63 @@ public class Estudiante
     private long carnet;
     private ArrayList<Charla> charlasEst;
 
-
+    /**
+     * 
+     * @param usuario: nombre del usuario
+     * @param contrasena: contrasena
+     */
     public Estudiante(String usuario, String contrasena)
     {
-            this.usuario = usuario;
-            this.contrasena = contrasena;
-            this.horasDone = 0;
+        charlasEst = new ArrayList<>();
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.horasDone = 0;
     }
+    /**
+     * 
+     * @return usuario
+     */
     public String getNombre()
     {
             return usuario;
     }
+    /**
+     * 
+     * @return contrasena
+     */
     public String getContrasena()
     {
         return contrasena;
     }
+    /**
+     * 
+     * @return horas cumplidas
+     */
     public int getHoras()
     {
             return horasDone;
     }
+    /**
+     * 
+     * @return charlas asistidas 
+     */
     public ArrayList<Charla> getCEst()
     {
             return charlasEst;
     }
+    
+    /**
+     * 
+     * @param hora: duracion de la charla
+     */
     public void addHoras(int hora)
-    {
-        this.horasDone += hora;
+    {   while(horasDone<8)
+        {this.horasDone += hora;}
     }
+    /**
+     * 
+     * @return horasRestantes
+     */
     public int horasRestantes()
     {
         if (horasDone < 5)
