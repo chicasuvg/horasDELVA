@@ -14,6 +14,7 @@ public class Estudiante
     private String usuario;
     private String contrasena;
     private int horasDone;
+    private int horasRestantes;
     private long carnet;
     private ArrayList<Charla> charlasEst;
 
@@ -43,5 +44,17 @@ public class Estudiante
     public void addHoras(int hora)
     {
         this.horasDone += hora;
+    }
+    public int horasRestantes()
+    {
+        if (horasDone < 5)
+        {
+            horasRestantes = 5- horasDone;
+        }
+        else if((horasDone == 5) || horasDone>5)
+        {
+            horasRestantes = 0;
+        }
+        return horasRestantes;
     }
 }

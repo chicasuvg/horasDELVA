@@ -50,4 +50,5 @@ public class Charla
     public int getDuracion(){
         return duracion;
     }
+    
 }
