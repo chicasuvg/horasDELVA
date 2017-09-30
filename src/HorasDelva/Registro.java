@@ -26,11 +26,12 @@ public class Registro {
         listaCharlas = new ArrayList<>();
         administradores = new ArrayList<>();
         estudiantes = new ArrayList<>();
-        String[] nombresUsuarios = {"arg17801", "ant14581"};
-        String[] contrasenas = {"1234", "1234"};
+        String[] nombresUsuarios = {"ARG17801", "ANT14581"};
+        String[] contrasenas = {"1234", "1234", "1234"};
         Administrador cindy = new Administrador(nombresUsuarios[1], contrasenas[1]);
         Estudiante andrea = new Estudiante(nombresUsuarios[0], contrasenas[0]);
         administradores.add(cindy);
+        cindy.getAlumnos().add(andrea);
         estudiantes.add(andrea);
         acceso = false;
     }
@@ -45,14 +46,14 @@ public class Registro {
     {
         if(tipoUsuario.equals("Administrador"))
         {
-            Administrador nuevo = new Administrador(nombreUsuario, contrasena);
+            Administrador nuevo = new Administrador(nombreUsuario.toUpperCase(), contrasena);
             nuevo.setCharlas(listaCharlas); //para que el nuevo administrador tenga acceso a todas las charlas previamente ingresadas
             administradores.add(nuevo);
             
         }
         if (tipoUsuario.equals("Estudiante"))
         {
-            Estudiante nuevo = new Estudiante(nombreUsuario, contrasena);
+            Estudiante nuevo = new Estudiante(nombreUsuario.toUpperCase(), contrasena);
             estudiantes.add(nuevo);
             for(Administrador admin : administradores)
             {
@@ -109,7 +110,10 @@ public class Registro {
             {
                 existe=true;
             }
-            else{existe=false;}
+            else
+            {
+                existe=false;
+            }
         }
         return existe;
     }
@@ -139,22 +143,32 @@ public class Registro {
             if(charla.getNombre().equals(nombre)){
                 existe=true;
             }
-            else{existe=false;}
         }
         return existe;
     }
-    public boolean buscarAsistente(String carnet)
-    { boolean existe=false;
-        for(Charla delva : listaCharlas)
+    public boolean buscarAsistente(String nombre, String carnet)
+    { 
+        boolean existe=false;
+        for(Charla charla:listaCharlas)
         {
-            for (Estudiante estudiante: delva.getAsistentes())
+            if(charla.getNombre().equals(nombre))
             {
-                if(estudiante.getNombre().equals(carnet))
-                {
-                    existe=true;
-                }
-                else{existe=false;}
+                existe=charla.buscarAsistente(carnet);
             }
+        }
+        return existe;
+    }
+    public boolean buscarAdmin(String usuario)
+    {
+        boolean existe=false;
+        for(Administrador admin:administradores)
+        {
+            if(admin.getNombre().equals(usuario))
+            {
+                existe=true;
+                
+            }
+            else{existe=false;}
         }
         return existe;
     }

@@ -68,8 +68,15 @@ public class Estudiante
      * @param hora: duracion de la charla
      */
     public void addHoras(int hora)
-    {   while(horasDone<8)
-        {this.horasDone += hora;}
+    {   
+        if(horasDone<8)
+        {
+            this.horasDone += hora;
+        }
+        else 
+        {
+            this.horasDone = 8;
+        }
     }
     /**
      * 
@@ -86,5 +93,23 @@ public class Estudiante
             horasRestantes = 0;
         }
         return horasRestantes;
+    }
+    /**
+     * 
+     * @return para obtener las charlas a las que ha asistido el estudiante
+     */
+    public String charlasAsistente()
+    {
+        String infocharla = "";
+        for(Charla delva : charlasEst)
+        {
+            infocharla += delva.toStringEst();
+        }   
+        return infocharla;
+    }
+    public void quitarCharla(Charla charla)
+    {
+        charlasEst.remove(charla);
+        this.horasDone=horasDone-1;
     }
 }

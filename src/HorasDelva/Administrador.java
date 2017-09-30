@@ -27,14 +27,6 @@ public class Administrador
         existente = true;
     }
     /**
-     * Para obtener si el estudiante ingresado existe o no 
-     * @return arraylist de estudiantes
-     */
-    public boolean getExistente()
-    {
-        return existente;
-    }
-    /**
      * Para obtener el nombre de usuario del administrador
      * @return string de nombre de usuario
      */
@@ -91,15 +83,11 @@ public class Administrador
             {
                 for (Estudiante estudiante: alumnos)
                 {
-                    if (estudiante.getNombre().contains(carnet))
+                    if (estudiante.getNombre().equals(carnet))
                     {
-                        int hora=delva.getDuracion();
+                        int hora = delva.getDuracion();
                         estudiante.addHoras(hora); //agregarle al estudiante las horas que cumplio
-                        delva.getAsistentes().add(estudiante); //para agregar a la lista de asistentes al estudiante
-                    }
-                    else
-                    {
-                        existente = false;
+                        delva.setAsistentes(estudiante); //para agregar a la lista de asistentes al estudiante
                     }
                 }
             }
