@@ -3,9 +3,9 @@
  * Andrea Arguello (17801) 
  * Cindy Antillon (14581)
  * @since 04/08/2017
-@proposito  modela la informacion del estudiante UVG que - potencialmente - asistira a una charla
-Estudiante.java
-*/
+ * @proposito  modela la informacion del estudiante UVG que - potencialmente - asistira a una charla
+ * Estudiante.java
+**/
 package HorasDelva;
 import java.util.ArrayList;
 

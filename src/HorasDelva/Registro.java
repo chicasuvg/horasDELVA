@@ -66,6 +66,7 @@ public class Registro {
      * un usuario determinado.
      * @param nombreUsuario: el nombre de la cuenta
      * @param contrasena: la contrasena de la cuenta
+     * @return boolean si puede entrar o no.
      */
     public boolean verificacionIngreso(String nombreUsuario, String contrasena)
     {

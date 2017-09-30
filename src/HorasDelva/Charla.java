@@ -4,8 +4,8 @@
  * Cindy Antillon (14581)
  * @since 04/08/2017
  * @proposito  modela la informacion de una charla DELVA
-Charla.java
-*/
+ * Charla.java
+**/
 package HorasDelva;
 import java.util.ArrayList;
 
@@ -112,7 +112,8 @@ public class Charla
     }
     /**
      * Buscar un estudiante especifico dentro de los asistentes de la charla
-     * @return boolean si esta o no
+     * @param usuario: nombre de estudiante
+     * @return boolean si ya fue ingresado o no
      */
     public boolean buscarAsistente(String usuario)
     { boolean existe=false;
