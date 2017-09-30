@@ -107,6 +107,10 @@ public class Estudiante
         }   
         return infocharla;
     }
+    /**
+     * Eliminar una charla de la lista si el administrador la elimino
+     * @param charla: charla que se quiere eliminar de la lista
+     */
     public void quitarCharla(Charla charla)
     {
         charlasEst.remove(charla);

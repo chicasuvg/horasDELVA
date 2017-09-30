@@ -27,22 +27,42 @@ public class Charla
         this.duracion = duracion;
         asistentes = new ArrayList<>();
     }
+    /**
+     * Obtener el nombre de la charla
+     * @return String nombre de charla
+     */
     public String getNombre()
     {
         return nombre;
     }
+    /**
+     * Obtener la fecha de la charla
+     * @return String fecha de charla
+     */
     public String getFecha()
     {
         return fecha;
     }
+    /**
+     * Obtener la lista de estudiantes que han asistido a esta charla
+     * @return array de estudiantes
+     */
     public ArrayList<Estudiante> getAsistentes()
     {
         return asistentes;
     }
+    /**
+     * Agregar asistentes a la charla
+     * @param estudiante: estudiante
+     */
     public void setAsistentes(Estudiante estudiante)
     {
         this.asistentes.add(estudiante);
     }
+    /**
+     * Obtener la informacion de la charla que es relevante para el administrador
+     * @return String informacion de charla
+     */
     public String toStringAdmin()
     {
         String hilo = "Nombre charla: "+ nombre;
@@ -58,6 +78,10 @@ public class Charla
         hilo += "\nAsistentes: "+ assist;
         return hilo;
     }
+    /**
+     * Obtener la informacion de la charla que es relevante para el Estudiante
+     * @return String informacion de charla
+     */
     public String toStringEst()
     {
         String hilo = "Nombre charla: "+ nombre;
@@ -67,9 +91,17 @@ public class Charla
         hilo += "\nDuracion (horas): " + duracion+ "\n";
         return hilo;
     }
+    /**
+     * Obtener la duracion (horas) de la charla
+     * @return int horas
+     */
     public int getDuracion(){
         return duracion;
     }
+    /**
+     * Obtener todos los asistentes de esta charla 
+     * @return String informacion de charla
+     */
     public String todosAsistentes()
     {   String asistieron="";
         for(Estudiante asistente:asistentes)
@@ -78,6 +110,10 @@ public class Charla
         }
         return asistieron;
     }
+    /**
+     * Buscar un estudiante especifico dentro de los asistentes de la charla
+     * @return boolean si esta o no
+     */
     public boolean buscarAsistente(String usuario)
     { boolean existe=false;
         for(Estudiante asistio: asistentes)

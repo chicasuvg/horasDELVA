@@ -15,7 +15,6 @@ public class Registro {
     private ArrayList<Administrador> administradores; //lista de administradores de UVG Delvas
     private ArrayList<Estudiante> estudiantes; // lista de estudiantes de UVG
     private ArrayList<Charla> listaCharlas;
-    private boolean existente;
     private boolean acceso;
     private boolean student;
     private boolean admin;
@@ -93,14 +92,27 @@ public class Registro {
         }
         return this.acceso;
     }
+    /**
+     * Para obtener la lista de administradores
+     * @return Array de las administradores
+     */
     public ArrayList<Administrador> usuarioAdmin()
     {
         return administradores;
     }
+    /**
+     * Para obtener la lista de estudiantes de UVG
+     * @return Array de las estudiantes
+     */
     public ArrayList<Estudiante> usuarioEst()
     {
         return estudiantes;
     }
+    /**
+     * Para poder buscar si un estudiante ya existe en la base de datos (para que no se creen dos iguales)
+     * @param carnet: nombre de usuario del estudiante
+     * @return boolean de si ya existe o no
+     */
     public boolean buscarEstudiante(String carnet)
     {
         boolean existe=false;
@@ -117,26 +129,51 @@ public class Registro {
         }
         return existe;
     }
+    /**
+     * Para obtener la lista de charlas que todos los administradores tienen 
+     * @return Array de las charlas
+     */
     public ArrayList<Charla> getCharlas()
     {
         return listaCharlas;
     }
+    /**
+     * Para saber si lo que ingreso el usuario son los datos correctos para poder "iniciar sesion" de un usuario tipo estudiante
+     * @return boolean si puede entrar o no
+     */
     public boolean getAccesoEst()
     {
         return student;
     }
+    /**
+     * Para saber si lo que ingreso el usuario son los datos correctos para poder "iniciar sesion" de un usuario tipo administrador
+     * @return boolean si puede entrar o no
+     */
     public boolean getAccesoAdmin()
     {
         return admin;
     }
+    /**
+     * Obtener el objeto Administrador que actualmente se esta utilizando
+     * @return Administrador
+     */
     public Administrador getAdministrador()
     {
         return usuarioAdmin;
     }
+    /**
+     * Obtener el objeto Estudiante que actualmente se esta utilizando
+     * @return Estudiante
+     */
     public Estudiante getEstudiante()
     {
         return usuarioEst;
     }
+    /**
+     * Buscar si la charla ya existe en la Base de datos (para no crear dos iguales)
+     * @param nombre: nombre de la charla
+     * @return boolean si existe o no
+     */
     public boolean buscarCharla(String nombre)
     {   boolean existe=false;
         for(Charla charla: listaCharlas){
@@ -146,6 +183,12 @@ public class Registro {
         }
         return existe;
     }
+    /**
+     * Buscar si un estudiante ya se ha ingresado antes (para no ingresar el mismo estudiante dos veces en la misma charla)
+     * @param nombre: nombre de la charla
+     * @param carnet: nombre de usuario del estudiante
+     * @return boolean
+     */
     public boolean buscarAsistente(String nombre, String carnet)
     { 
         boolean existe=false;
@@ -158,6 +201,11 @@ public class Registro {
         }
         return existe;
     }
+    /**
+     * Buscar si un administrador ya se ha creado antes (para no crear dos iguales)
+     * @param usuario: nombre de usuario
+     * @return boolean
+     */
     public boolean buscarAdmin(String usuario)
     {
         boolean existe=false;
