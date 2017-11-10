@@ -18,6 +18,11 @@ public class Administrador
     private ArrayList<Estudiante> alumnos;
     private boolean existente; //para ver si un estudiante existe en la base de datos o no.
 
+    /**
+     * Constructor
+     * @param usuario usuario
+     * @param contrasena contrasena
+     */
     public Administrador(String usuario, String contrasena)
     {
         this.usuario = usuario;
