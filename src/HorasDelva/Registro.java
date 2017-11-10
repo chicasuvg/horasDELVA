@@ -1,4 +1,4 @@
-/**
+ /**
  * @author Ana Lucia Hernandez (17138)
  * Andrea Arguello (17801) 
  * Cindy Antillon (14581)
@@ -180,6 +180,7 @@ public class Registro {
         for(Charla charla: listaCharlas){
             if(charla.getNombre().equals(nombre)){
                 existe=true;
+                return existe;
             }
         }
         return existe;

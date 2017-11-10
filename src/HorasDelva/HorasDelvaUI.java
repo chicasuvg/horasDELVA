@@ -243,7 +243,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         jLabel23.setText(":");
 
-        ACduracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        ACduracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+        ACduracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ACduracionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -331,7 +336,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             .addGroup(PPagregarCharlaLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ADMINISTRADOR", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
@@ -896,7 +901,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void newCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCharlaActionPerformed
-        String nombre = ACnombre.getText();
+        String nombre = ACnombre.getText().toUpperCase();
         String salon = AClugar.getText();
         String hora = AChora.getText();
         String minuto=ACminuto.getText();
@@ -918,7 +923,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         {
             int duracion = Integer.parseInt(String.valueOf(ACduracion.getSelectedItem()));
             String time = hora + ":" + minuto;
-            Charla nueva = new Charla(nombre.toUpperCase(), salon, time, fecha, duracion);
+            Charla nueva = new Charla(nombre, salon, time, fecha, duracion);
             registro.getAdministrador().agregarCharla(nueva);
             JOptionPane.showMessageDialog(null, "Charla ingresada");
             ACnombre.setText("");
@@ -943,16 +948,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         }
         else
         {
-            for(Charla charla: registro.getCharlas())
-            {
-                if(charla.getNombre().equals(nombre))
-                {
-                    for(Estudiante estudiante: charla.getAsistentes())
-                    {
-                        estudiante.quitarCharla(charla);
-                    }
-                }
-            }    
+            JOptionPane.showMessageDialog(null,"Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
             registro.getAdministrador().eliminarCharla(nombre);
             JOptionPane.showMessageDialog(null, "Charla eliminada.");
             ECnombre.setText("");
@@ -1087,6 +1083,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_verCharlasButtonActionPerformed
+
+    private void ACduracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACduracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ACduracionActionPerformed
 
     /**
      * @param args the command line arguments

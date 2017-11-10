@@ -85,8 +85,7 @@ public class Administrador
                 {
                     if (estudiante.getNombre().equals(carnet))
                     {
-                        int hora = delva.getDuracion();
-                        estudiante.addHoras(hora); //agregarle al estudiante las horas que cumplio
+                        estudiante.addHoras(); //agregarle al estudiante las horas que cumplio
                         delva.setAsistentes(estudiante); //para agregar a la lista de asistentes al estudiante
                     }
                 }
