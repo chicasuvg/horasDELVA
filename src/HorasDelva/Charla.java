@@ -8,7 +8,9 @@
 **/
 package HorasDelva;
 import java.util.ArrayList;
+import org.mongodb.morphia.annotations.Embedded;
 
+@Embedded
 public class Charla
 {
     private String nombre; //el nombre de la charla siempre ira en mayusculas
