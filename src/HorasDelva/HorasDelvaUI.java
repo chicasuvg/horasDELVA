@@ -23,7 +23,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
      * Creates new form HorasDelvaUI
      */
     Registro registro;
-    Administrador admin; 
+    Administrador admin;
+    BaseDeDatos db;
     Date ahora;
     SimpleDateFormat fecha;
     String hoy;
@@ -32,6 +33,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     public HorasDelvaUI() {
         
         initComponents();
+        db = new BaseDeDatos();
         registro = new Registro();
         ahora= new Date();
         fecha= new SimpleDateFormat("dd/MM/yyyy");
@@ -882,14 +884,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
         
-        if (registro.verificacionIngreso(ingresoUsuario.getText().toUpperCase(), ingresoContrasena.getText()) == true)
+        if (db.verificacionIngreso(ingresoUsuario.getText().toUpperCase(), ingresoContrasena.getText()) == true)
         {
-            if (registro.getAccesoAdmin() == true)
+            if (db.getAdmin() == true)
             {
                 ingresoAdmin.pack();
                 ingresoAdmin.setVisible(true);
             }
-            if(registro.getAccesoEst() == true)
+            if(db.getEst() == true)
             {
                 ingresoEst.pack();
                 ingresoEst.setVisible(true);
@@ -916,11 +918,13 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         String minuto=ACminuto.getText();
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = df.format(ACcalendar.getDate());
+        int duracion = Integer.parseInt(String.valueOf(ACduracion.getSelectedItem()));
+        String time = hora + ":" + minuto;
         if(nombre.equals("") || salon.equals("") || hora.equals("") || minuto.equals(""))
         {
             JOptionPane.showMessageDialog(null, "02005: Uno de los campos esta vacio.", "Error",JOptionPane.ERROR_MESSAGE);
         }
-        else if(registro.buscarCharla(nombre)==true)
+        else if(db.ingresarCharla(nombre, salon, time, fecha, duracion) ==true)
         {
             JOptionPane.showMessageDialog(null, "02001: La charla que ha ingresado ya existe. No pueden existir dos charlas con el mismo nombre", "Error",JOptionPane.ERROR_MESSAGE);
         }
@@ -930,10 +934,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         }
         else
         {
-            int duracion = Integer.parseInt(String.valueOf(ACduracion.getSelectedItem()));
-            String time = hora + ":" + minuto;
-            Charla nueva = new Charla(nombre, salon, time, fecha, duracion);
-            registro.getAdministrador().agregarCharla(nueva);
             JOptionPane.showMessageDialog(null, "Charla ingresada");
             ACnombre.setText("");
             AClugar.setText("");

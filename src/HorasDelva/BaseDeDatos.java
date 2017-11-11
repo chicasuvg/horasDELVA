@@ -12,6 +12,7 @@ import java.util.List;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
 
 public class BaseDeDatos {
     private Datastore ds;
@@ -38,8 +39,10 @@ public class BaseDeDatos {
         query1 = ds.createQuery(Estudiante.class);
         List<Estudiante> busqueda1 = query1.asList();
         estudiantes = busqueda1;
+        query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
+        
     }
     public boolean getEst()
     {
@@ -115,7 +118,7 @@ public class BaseDeDatos {
         }
         return puedeIngresar;
     }
-    public void ingresarCharla(String nombre, String salon, String time, String fecha, int duracion)
+    public boolean ingresarCharla(String nombre, String salon, String time, String fecha, int duracion)
     {
         boolean existeCharla = false;
         for (Charla delva : charlas)
@@ -125,11 +128,15 @@ public class BaseDeDatos {
                 existeCharla = true;
             }
         }
-        if (existeCharla == true)
+        if (existeCharla == false)
         {
             Charla delva = new Charla(nombre, salon, time, fecha, duracion);
             usuarioA.agregarCharla(delva);
+            ds.save(delva);
+            UpdateOperations upd = ds.createUpdateOperations(Administrador.class).set("charlasAdmin", usuarioA.mostrarCharlas());
+            ds.update(query, upd,false);        
         }
+        return existeCharla;
         
     }
     

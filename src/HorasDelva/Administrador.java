@@ -9,18 +9,23 @@
 package HorasDelva;
 
 import java.util.ArrayList;
-//import org.bson.types.ObjectId;
-//import org.mongodb.morphia.annotations.Id;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Id;
 
 public class Administrador
 {
-    //@Id private ObjectId id; 
+    @Id private ObjectId id; 
     private String usuario;
     private String contrasena;
     private ArrayList<Charla> charlasAdmin;
     private ArrayList<Estudiante> alumnos;
     private boolean existente; //para ver si un estudiante existe en la base de datos o no.
-
+    
+    public Administrador()
+    {
+        charlasAdmin = new ArrayList<>();
+        alumnos = new ArrayList<>();
+    }
     /**
      * Constructor
      * @param usuario usuario

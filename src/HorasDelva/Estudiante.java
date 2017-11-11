@@ -8,16 +8,20 @@
 **/
 package HorasDelva;
 import java.util.ArrayList;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Id;
 
 public class Estudiante
 {
+    @Id private ObjectId id; 
     private String usuario;
     private String contrasena;
     private int horasDone;
     private int horasRestantes;
     private long carnet;
     private ArrayList<Charla> charlasEst;
-
+    
+    public Estudiante(){}
     /**
      * 
      * @param usuario: nombre del usuario

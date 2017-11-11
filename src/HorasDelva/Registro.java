@@ -8,8 +8,11 @@
 package HorasDelva;
 
 import java.util.ArrayList;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Id;
 
 public class Registro {
+    @Id private ObjectId id; 
     private Estudiante usuarioEst;//usuario que actualmente esta activo (para cuando inicie sesion)
     private Administrador usuarioAdmin; //usuario que actualmente esta activo (para cuando inicie sesion)
     private ArrayList<Administrador> administradores; //lista de administradores de UVG Delvas
