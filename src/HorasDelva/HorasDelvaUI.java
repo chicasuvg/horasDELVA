@@ -11,6 +11,7 @@ package HorasDelva;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,11 +24,19 @@ public class HorasDelvaUI extends javax.swing.JFrame {
      */
     Registro registro;
     Administrador admin; 
+    Date ahora;
+    SimpleDateFormat fecha;
+    String hoy;
+    
     
     public HorasDelvaUI() {
         
         initComponents();
         registro = new Registro();
+        ahora= new Date();
+        fecha= new SimpleDateFormat("dd/MM/yyyy");
+        hoy=(fecha.format(ahora)); 
+        
     }
 
     /**
@@ -905,7 +914,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         String salon = AClugar.getText();
         String hora = AChora.getText();
         String minuto=ACminuto.getText();
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = df.format(ACcalendar.getDate());
         if(nombre.equals("") || salon.equals("") || hora.equals("") || minuto.equals(""))
         {
@@ -930,6 +939,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             AClugar.setText("");
             AChora.setText("");
             ACminuto.setText("");
+            ACcalendar.setDate(null);
         }
         
     }//GEN-LAST:event_newCharlaActionPerformed
@@ -941,17 +951,22 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarActionPerformed
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
-        String nombre = ECnombre.getText().toUpperCase();
+        try{String nombre = ECnombre.getText().toUpperCase();
         if(registro.buscarCharla(nombre)==false)
         {
             JOptionPane.showMessageDialog(null, "02003: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
+            fechaFutura.fechaFutura(registro.fechaCharla(nombre));
+            JOptionPane.showMessageDialog(null,"Usted ya ha ingresado asistentes a esta charla. Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
             registro.getAdministrador().eliminarCharla(nombre);
             JOptionPane.showMessageDialog(null, "Charla eliminada.");
             ECnombre.setText("");
+        }}
+        catch(FechaException e)
+        {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_eliminarDELVAActionPerformed
 

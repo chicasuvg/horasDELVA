@@ -9,12 +9,12 @@
 package HorasDelva;
 
 import java.util.ArrayList;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Id;
+//import org.bson.types.ObjectId;
+//import org.mongodb.morphia.annotations.Id;
 
 public class Administrador
 {
-    @Id private ObjectId id; 
+    //@Id private ObjectId id; 
     private String usuario;
     private String contrasena;
     private ArrayList<Charla> charlasAdmin;

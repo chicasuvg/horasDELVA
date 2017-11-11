@@ -222,5 +222,25 @@ public class Registro {
         }
         return existe;
     }
-   
+
+        /**
+         * 
+         * @param nombre
+         * @return 
+         */
+        public String fechaCharla(String nombre)
+        {
+            String fecha="";
+            for(Charla charla:listaCharlas)
+        {
+            if(charla.getNombre().equals(nombre))
+            {
+                fecha=charla.getFecha();
+                
+            }
+        }
+            return fecha;
+        }
+        
+        
 }
