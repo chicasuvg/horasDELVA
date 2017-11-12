@@ -957,7 +957,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
         try{String nombre = ECnombre.getText().toUpperCase();
-        if(registro.buscarCharla(nombre)==false)
+        if(db.buscarCharla(nombre)==false)
         {
             JOptionPane.showMessageDialog(null, "02003: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
         }
@@ -1002,14 +1002,13 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         String tipoUsuario = String.valueOf(CUtipo.getSelectedItem());
         String newnombre = CUnombre.getText();
         String newcont = CUcont.getText();
-        if((tipoUsuario.equals("Administrador") && (registro.buscarAdmin(newnombre)==true || registro.buscarEstudiante(newnombre)==true)) || (tipoUsuario.equals("Estudiante") && (registro.buscarEstudiante(newnombre)==true || registro.buscarAdmin(newnombre)==true)))
+        if(db.crearUsuario(tipoUsuario, newnombre, newcont) == true)
         {
             JOptionPane.showMessageDialog(null, "01002: Este usuario ya existe.", "Error",JOptionPane.ERROR_MESSAGE);
         
         }
         else
         {
-            registro.crearUsuario(tipoUsuario, newnombre, newcont);
             JOptionPane.showMessageDialog(null, "Usuario creado.");
             CUnombre.setText("");
             CUcont.setText("");

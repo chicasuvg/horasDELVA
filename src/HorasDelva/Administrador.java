@@ -71,7 +71,7 @@ public class Administrador
      * Metodo para eliminar una charla de la lista. 
      * @param busqueda: nombre de la charla que se quiere eliminar.
      */
-    public void eliminarCharla(String busqueda)
+    public ArrayList<Charla> eliminarCharla(String busqueda)
     {
         int index =0;
         for (Charla delva : charlasAdmin)
@@ -82,6 +82,7 @@ public class Administrador
             }
         }
         charlasAdmin.remove(index); //elimina la charla que tiene el index de la charla que quiere eliminar
+        return charlasAdmin;
     }	
     /**
      * Para obtener el nombre de usuario del administrador

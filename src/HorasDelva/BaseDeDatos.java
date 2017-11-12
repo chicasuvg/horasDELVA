@@ -42,7 +42,6 @@ public class BaseDeDatos {
         query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
-        
     }
     public boolean getEst()
     {
@@ -62,6 +61,15 @@ public class BaseDeDatos {
     }
     public boolean crearUsuario(String tipoUsuario, String nombreUsuario, String contrasena)
     {
+        query = ds.createQuery(Administrador.class);
+        List<Administrador> busqueda = query.asList();
+        administradores = busqueda;
+        query1 = ds.createQuery(Estudiante.class);
+        List<Estudiante> busqueda1 = query1.asList();
+        estudiantes = busqueda1;
+        query2 = ds.createQuery(Charla.class);
+        List<Charla> busqueda2 = query2.asList();
+        charlas = busqueda2;
         boolean existeUsuario = false;
         for (Administrador admin : administradores)
         {
@@ -98,6 +106,16 @@ public class BaseDeDatos {
     public boolean verificacionIngreso(String nombreUsuario, String contrasena)
     {
         boolean puedeIngresar = false;
+        query = ds.createQuery(Administrador.class);
+        List<Administrador> busqueda = query.asList();
+        administradores = busqueda;
+        query1 = ds.createQuery(Estudiante.class);
+        List<Estudiante> busqueda1 = query1.asList();
+        estudiantes = busqueda1;
+        query2 = ds.createQuery(Charla.class);
+        List<Charla> busqueda2 = query2.asList();
+        charlas = busqueda2;
+        ArrayList<Charla> charlasA = new ArrayList<>();
         for(Estudiante estudiante: estudiantes)
         {
             if(estudiante.getNombre().equals(nombreUsuario) && estudiante.getContrasena().equals(contrasena))
@@ -114,6 +132,8 @@ public class BaseDeDatos {
                 puedeIngresar = true;
                 admin = true;
                 usuarioA = administrador;
+                for(Charla charl: charlas) {charlasA.add(charl);}
+                usuarioA.setCharlas(charlasA);
             }
         }
         return puedeIngresar;
@@ -138,6 +158,8 @@ public class BaseDeDatos {
             ds.save(delva);
             UpdateOperations upd = ds.createUpdateOperations(Administrador.class).set("charlasAdmin", usuarioA.mostrarCharlas());
             ds.update(query, upd,false);        
+            UpdateOperations upd1 = ds.createUpdateOperations(Estudiante.class).set("charlasEst", usuarioA.mostrarCharlas());
+            ds.update(query1, upd1,false);  
         }
         return existeCharla;
         
@@ -162,7 +184,8 @@ public class BaseDeDatos {
         return existe;
     }
     public boolean buscarCharla(String nombre)
-    {   boolean existe=false;
+    {   
+        boolean existe=false;
         query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
@@ -172,7 +195,6 @@ public class BaseDeDatos {
             if(charla.getNombre().equals(nombre))
             {
                 existe=true;
-                return existe;
             }
         }
         return existe;
@@ -226,6 +248,18 @@ public class BaseDeDatos {
         return fecha;
     }
     public void eliminarCharla(String nombre)
+    {
+        ArrayList<Charla> eliminar = usuarioA.eliminarCharla(nombre);
+        query = ds.createQuery(Administrador.class);
+        query1 = ds.createQuery(Estudiante.class);
+        UpdateOperations upd = ds.createUpdateOperations(Estudiante.class).set("charlasEst", eliminar);
+        ds.update(query1, upd,false);
+        UpdateOperations update = ds.createUpdateOperations(Administrador.class).set("charlasAdmin", eliminar);
+        ds.update(query, update,false);
+        Query<Charla> queryDelete =  ds.createQuery(Charla.class).filter("nombre", nombre);
+        ds.delete(queryDelete);
+    }
+    public void agregarAsistentes(String nombrec, String carnet)
     {
         
     }

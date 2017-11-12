@@ -22,7 +22,7 @@ public class Charla
     private ArrayList<Estudiante> asistentes;
     private int duracion;
     
-    public Charla(){}
+    public Charla(){asistentes = new ArrayList<>();}
     public Charla(String nombre, String salon, String hora, String fecha, int duracion)
     {
         this.nombre = nombre;
