@@ -121,6 +121,9 @@ public class BaseDeDatos {
     public boolean ingresarCharla(String nombre, String salon, String time, String fecha, int duracion)
     {
         boolean existeCharla = false;
+        query2 = ds.createQuery(Charla.class);
+        List<Charla> busqueda2 = query2.asList();
+        charlas = busqueda2;
         for (Charla delva : charlas)
         {
             if (delva.getNombre().equals(nombre))
@@ -139,5 +142,91 @@ public class BaseDeDatos {
         return existeCharla;
         
     }
-    
+    public boolean buscarEstudiante(String carnet)
+    {
+        query1 = ds.createQuery(Estudiante.class);
+        List<Estudiante> busqueda1 = query1.asList();
+        estudiantes = busqueda1;
+        boolean existe=false;
+        for(Estudiante estudiante: estudiantes)
+        {
+            if(estudiante.getNombre().equals(carnet))
+            {
+                existe=true;
+            }
+            else
+            {
+                existe=false;
+            }
+        }
+        return existe;
+    }
+    public boolean buscarCharla(String nombre)
+    {   boolean existe=false;
+        query2 = ds.createQuery(Charla.class);
+        List<Charla> busqueda2 = query2.asList();
+        charlas = busqueda2;
+        
+        for(Charla charla: charlas)
+        {
+            if(charla.getNombre().equals(nombre))
+            {
+                existe=true;
+                return existe;
+            }
+        }
+        return existe;
+    }
+    public boolean buscarAsistente(String nombre, String carnet)
+    { 
+        boolean existe=false;
+        query2 = ds.createQuery(Charla.class);
+        List<Charla> busqueda2 = query2.asList();
+        charlas = busqueda2;
+        
+        for(Charla charla:charlas)
+        {
+            if(charla.getNombre().equals(nombre))
+            {
+                existe=charla.buscarAsistente(carnet);
+            }
+        }
+        return existe;
+    }
+    public boolean buscarAdmin(String usuario)
+    {
+        query = ds.createQuery(Administrador.class);
+        List<Administrador> busqueda = query.asList();
+        administradores = busqueda;
+        boolean existe=false;
+        for(Administrador admin:administradores)
+        {
+            if(admin.getNombre().equals(usuario))
+            {
+                existe=true;
+                
+            }
+            else{existe=false;}
+        }
+        return existe;
+    }
+    public String fechaCharla(String nombre)
+    {
+        query2 = ds.createQuery(Charla.class);
+        List<Charla> busqueda2 = query2.asList();
+        charlas = busqueda2;
+        String fecha="";
+        for(Charla charla: charlas)
+        {
+            if(charla.getNombre().equals(nombre))
+            {
+                fecha=charla.getFecha();
+            }
+        }
+        return fecha;
+    }
+    public void eliminarCharla(String nombre)
+    {
+        
+    }
 }

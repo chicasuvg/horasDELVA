@@ -21,7 +21,10 @@ public class Estudiante
     private long carnet;
     private ArrayList<Charla> charlasEst;
     
-    public Estudiante(){}
+    public Estudiante()
+    {
+        charlasEst = new ArrayList<>();
+    }
     /**
      * 
      * @param usuario: nombre del usuario
