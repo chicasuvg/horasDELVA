@@ -20,7 +20,7 @@ public class Estudiante
     private int horasDone;
     private int horasRestantes;
     private long carnet;
-    @Embedded private ArrayList<Charla> charlasEst;
+    private ArrayList<Charla> charlasEst;
     
     public Estudiante()
     {

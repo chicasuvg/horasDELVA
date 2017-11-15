@@ -12,9 +12,10 @@ import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Id;
 
-@Embedded
+
 public class Charla
 {
+    @Id private ObjectId id;
     private String nombre; //el nombre de la charla siempre ira en mayusculas
     private String lugar;
     private String hora;

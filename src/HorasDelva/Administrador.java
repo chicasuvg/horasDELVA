@@ -39,6 +39,10 @@ public class Administrador
         alumnos = new ArrayList<>();
         existente = true;
     }
+    public void setAlumnos(Estudiante estudiante)
+    {
+        alumnos.add(estudiante);
+    }
     /**
      * Para obtener el nombre de usuario del administrador
      * @return string de nombre de usuario
@@ -89,8 +93,9 @@ public class Administrador
      * @param bcharla: representa el nombre de la charla a la que quiere ingresarle la asistencia
      * @param carnet: carnet del estudiante que se quiere modificar la asistencia.
      */
-    public ArrayList<Charla> agregarAsistentes(String bcharla, String carnet) 
+    public ArrayList<Estudiante> agregarAsistentes(String bcharla, String carnet) 
     { 
+        ArrayList<Estudiante> asistentes = new ArrayList<>();
         for (Charla delva: charlasAdmin)
         {
             if (delva.getNombre().equals(bcharla))
@@ -104,8 +109,9 @@ public class Administrador
                     }
                 }
             }
+            asistentes = delva.getAsistentes();
         }
-        return charlasAdmin;
+        return asistentes;
     }
     /**
      * Para obtener el nombre de usuario del administrador
