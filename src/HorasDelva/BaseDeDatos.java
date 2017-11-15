@@ -31,17 +31,18 @@ public class BaseDeDatos {
     {
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
-        morphia.map(Administrador.class).map(Estudiante.class).map(Charla.class).map(Registro.class);
+        morphia.map(Administrador.class).map(Estudiante.class).map(Charla.class);
         ds = morphia.createDatastore(mongo, "HorasDelva");
         query = ds.createQuery(Administrador.class);
         List<Administrador> busqueda = query.asList();
         administradores = busqueda;
         query1 = ds.createQuery(Estudiante.class);
         List<Estudiante> busqueda1 = query1.asList();
-        estudiantes = busqueda1;
         query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
+        estudiantes = busqueda1;
+        query2 = ds.createQuery(Charla.class);
     }
     public boolean getEst()
     {
@@ -276,8 +277,8 @@ public class BaseDeDatos {
                     if(alumno.getNombre().equals(carnet))
                     {
                         
-                        UpdateOperations update = ds.createUpdateOperations(Charla.class).add("asistentes", carnet); 
-                        ds.update(query2, update, true);
+                      //  UpdateOperations update = ds.createUpdateOperations(Charla.class).add("asistentes", carnet); 
+                        //ds.update(query2, update, true);
                     }
                 }
                 
