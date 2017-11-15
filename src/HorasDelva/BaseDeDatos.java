@@ -275,15 +275,8 @@ public class BaseDeDatos {
                 {
                     if(alumno.getNombre().equals(carnet))
                     {
-                        String [] nombres = new String[alumnos.size()];
-                        int i =0;
-                        for (Estudiante stud: usuarioA.agregarAsistentes(nombrec, carnet))
-                        {
-                            nombres[i] = stud.getNombre();
-                            if (i<alumnos.size()) {i++;}
-                            else{break;}
-                        }
-                        UpdateOperations update = ds.createUpdateOperations(Charla.class).set("asistentes", nombres); 
+                        
+                        UpdateOperations update = ds.createUpdateOperations(Charla.class).add("asistentes", carnet); 
                         ds.update(query2, update, true);
                     }
                 }
