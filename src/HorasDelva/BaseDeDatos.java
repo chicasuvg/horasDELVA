@@ -264,6 +264,7 @@ public class BaseDeDatos {
         ArrayList<Charla> charlitas = usuarioA.mostrarCharlas();
         query = ds.createQuery(Administrador.class);
         query1 = ds.createQuery(Estudiante.class).field("usuario").equal(carnet);
+        query2 = ds.createQuery(Charla.class).field("nombre").equal(nombrec.toUpperCase());
         List<Estudiante> alumnos = query1.asList();
         for (Charla delva : charlitas)
         {
@@ -273,7 +274,7 @@ public class BaseDeDatos {
                 {
                     if(alumno.getNombre().equals(carnet))
                     {
-                        UpdateOperations update = ds.createUpdateOperations(Administrador.class).set("charlasAdmin", usuarioA.agregarAsistentes(nombrec, carnet));
+                        UpdateOperations update = ds.createUpdateOperations(Charla.class).set("charlasAdmin", usuarioA.agregarAsistentes(nombrec, carnet)); 
                         ds.update(query, update, true);
                     }
                 }
