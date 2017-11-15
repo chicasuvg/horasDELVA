@@ -992,7 +992,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         }
         else
         {
-            registro.getAdministrador().agregarAsistentes(nombrec, carnet);
+            db.agregarAsistentes(nombrec, carnet);
             JOptionPane.showMessageDialog(null, "Asistencia ingresada exitosamente.", "Ingreso",JOptionPane.PLAIN_MESSAGE);
             AAcarnet.setText("");
         }

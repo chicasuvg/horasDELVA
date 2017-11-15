@@ -261,6 +261,24 @@ public class BaseDeDatos {
     }
     public void agregarAsistentes(String nombrec, String carnet)
     {
-        
+        ArrayList<Charla> charlitas = usuarioA.mostrarCharlas();
+        query = ds.createQuery(Administrador.class);
+        query1 = ds.createQuery(Estudiante.class).field("usuario").equal(carnet);
+        List<Estudiante> alumnos = query1.asList();
+        for (Charla delva : charlitas)
+        {
+            if (delva.getNombre().equals(nombrec))
+            {
+                for(Estudiante alumno : alumnos)
+                {
+                    if(alumno.getNombre().equals(carnet))
+                    {
+                        UpdateOperations update = ds.createUpdateOperations(Administrador.class).set("charlasAdmin", usuarioA.agregarAsistentes(nombrec, carnet));
+                        ds.update(query, update, true);
+                    }
+                }
+                
+            }
+        }
     }
 }

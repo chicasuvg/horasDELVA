@@ -9,6 +9,7 @@
 package HorasDelva;
 import java.util.ArrayList;
 import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Id;
 
 public class Estudiante
@@ -19,7 +20,7 @@ public class Estudiante
     private int horasDone;
     private int horasRestantes;
     private long carnet;
-    private ArrayList<Charla> charlasEst;
+    @Embedded private ArrayList<Charla> charlasEst;
     
     public Estudiante()
     {
