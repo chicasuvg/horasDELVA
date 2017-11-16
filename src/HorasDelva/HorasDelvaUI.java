@@ -70,10 +70,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         ACcalendar = new com.toedter.calendar.JDateChooser();
         jLabel18 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        AChora = new javax.swing.JTextField();
-        ACminuto = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
         ACduracion = new javax.swing.JComboBox<>();
+        AChora = new javax.swing.JComboBox<>();
         PPeliminarCharla = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -253,14 +251,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         jLabel7.setText("Hora de charla (formato 24 horas):");
 
-        jLabel23.setText(":");
-
         ACduracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
         ACduracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ACduracionActionPerformed(evt);
             }
         });
+
+        AChora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -286,18 +284,15 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                         .addComponent(borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel18)
-                        .addGap(41, 41, 41)
-                        .addComponent(ACduracion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(AChora, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ACminuto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(AChora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(41, 41, 41)
+                                .addComponent(ACduracion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -317,12 +312,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(AClugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(AChora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ACminuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AChora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -925,13 +918,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void newCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCharlaActionPerformed
         String nombre = ACnombre.getText().toUpperCase();
         String salon = AClugar.getText();
-        String hora = AChora.getText();
-        String minuto=ACminuto.getText();
+        String hora = (String) AChora.getSelectedItem();
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = df.format(ACcalendar.getDate());
         int duracion = Integer.parseInt(String.valueOf(ACduracion.getSelectedItem()));
-        String time = hora + ":" + minuto;
-        if(nombre.equals("") || salon.equals("") || hora.equals("") || minuto.equals(""))
+        String time = hora;
+        if(nombre.equals("") || salon.equals(""))
         {
             JOptionPane.showMessageDialog(null, "02005: Uno de los campos esta vacio.", "Error",JOptionPane.ERROR_MESSAGE);
         }
@@ -939,17 +931,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "02001: La charla que ha ingresado ya existe. No pueden existir dos charlas con el mismo nombre", "Error",JOptionPane.ERROR_MESSAGE);
         }
-        else if(Integer.parseInt(hora)<6 || Integer.parseInt(hora)>20 || Integer.parseInt(minuto)<0 || Integer.parseInt(minuto)>59)
-        {
-            JOptionPane.showMessageDialog(null, "02004: La hora ingresada no es valida.", "Error",JOptionPane.ERROR_MESSAGE);
-        }
         else
         {
             JOptionPane.showMessageDialog(null, "Charla ingresada");
             ACnombre.setText("");
             AClugar.setText("");
-            AChora.setText("");
-            ACminuto.setText("");
             ACcalendar.setDate(null);
         }
         
@@ -958,7 +944,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         ACnombre.setText("");
         AClugar.setText("");
-        AChora.setText("");
     }//GEN-LAST:event_borrarActionPerformed
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
@@ -1162,9 +1147,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> AAnombre;
     private com.toedter.calendar.JDateChooser ACcalendar;
     private javax.swing.JComboBox<String> ACduracion;
-    private javax.swing.JTextField AChora;
+    private javax.swing.JComboBox<String> AChora;
     private javax.swing.JTextField AClugar;
-    private javax.swing.JTextField ACminuto;
     private javax.swing.JTextField ACnombre;
     private javax.swing.JTextField CUcont;
     private javax.swing.JButton CUnew;
@@ -1215,7 +1199,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

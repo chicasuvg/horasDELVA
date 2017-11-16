@@ -194,19 +194,18 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="ACduracion" min="-2" pref="111" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="AChora" min="-2" pref="48" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ACminuto" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="AChora" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="ACduracion" min="-2" pref="111" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace pref="55" max="32767" attributes="0"/>
@@ -234,12 +233,10 @@
                           <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="AClugar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="AChora" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ACminuto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel23" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -304,15 +301,6 @@
                 <Property name="text" type="java.lang.String" value="Hora de charla (formato 24 horas):"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="AChora">
-            </Component>
-            <Component class="javax.swing.JTextField" name="ACminuto">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel23">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=":"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JComboBox" name="ACduracion">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -325,6 +313,42 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ACduracionActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="AChora">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="25">
+                    <StringItem index="0" value="8:00"/>
+                    <StringItem index="1" value="8:30"/>
+                    <StringItem index="2" value="9:00"/>
+                    <StringItem index="3" value="9:30"/>
+                    <StringItem index="4" value="10:00"/>
+                    <StringItem index="5" value="10:30"/>
+                    <StringItem index="6" value="11:00"/>
+                    <StringItem index="7" value="11:30"/>
+                    <StringItem index="8" value="12:00"/>
+                    <StringItem index="9" value="12:30"/>
+                    <StringItem index="10" value="13:00"/>
+                    <StringItem index="11" value="13:30"/>
+                    <StringItem index="12" value="14:00"/>
+                    <StringItem index="13" value="14:30"/>
+                    <StringItem index="14" value="15:00"/>
+                    <StringItem index="15" value="15:30"/>
+                    <StringItem index="16" value="16:00"/>
+                    <StringItem index="17" value="16:30"/>
+                    <StringItem index="18" value="17:00"/>
+                    <StringItem index="19" value="17:30"/>
+                    <StringItem index="20" value="18:00"/>
+                    <StringItem index="21" value="18:30"/>
+                    <StringItem index="22" value="19:00"/>
+                    <StringItem index="23" value="19:30"/>
+                    <StringItem index="24" value="20:00"/>
+                  </StringArray>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
