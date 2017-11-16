@@ -85,10 +85,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        AAnombre = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         AAcarnet = new javax.swing.JTextField();
         ingresarAsistencia = new javax.swing.JButton();
+        AAnombre = new javax.swing.JComboBox<>();
         PPmostrarCharla = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -439,6 +439,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         });
 
+        AAnombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -451,9 +453,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AAnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,6 +463,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addComponent(ingresarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(AAnombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,9 +475,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AAnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addComponent(AAcarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -978,7 +982,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void ingresarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarAsistenciaActionPerformed
         String carnet = AAcarnet.getText().toUpperCase();
-        String nombrec = AAnombre.getText().toUpperCase(); 
+        String nombrec =(String) AAnombre.getSelectedItem(); 
         if(db.buscarEstudiante(carnet) == false)
         {
             JOptionPane.showMessageDialog(null, "03001: El carnet que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
@@ -1037,6 +1041,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         PPaddAsistente.pack();
         PPaddAsistente.setVisible(true);
         AAcarnet.setText("");
+        AAnombre.removeAllItems();
+        for(Charla charla: registro.getCharlas())
+        {
+            AAnombre.addItem(charla.getNombre());
+        }
     }//GEN-LAST:event_agregarAsistenteActionPerformed
 
     private void agregarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCharlaActionPerformed
@@ -1150,7 +1159,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AAcarnet;
-    private javax.swing.JTextField AAnombre;
+    private javax.swing.JComboBox<String> AAnombre;
     private com.toedter.calendar.JDateChooser ACcalendar;
     private javax.swing.JComboBox<String> ACduracion;
     private javax.swing.JTextField AChora;
