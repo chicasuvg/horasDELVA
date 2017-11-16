@@ -78,9 +78,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        ECnombre = new javax.swing.JTextField();
         eliminarDELVA = new javax.swing.JButton();
         eliminarCharlaDeseo = new javax.swing.JCheckBox();
+        ECnombre = new javax.swing.JComboBox<>();
         PPaddAsistente = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -366,24 +366,30 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         eliminarCharlaDeseo.setText("Estoy consciente que al eliminar la charla elimino todos los datos que contiene.");
 
+        ECnombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel11))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ECnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ECnombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(eliminarCharlaDeseo))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(eliminarDELVA, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(eliminarCharlaDeseo))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(eliminarDELVA, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -956,7 +962,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarActionPerformed
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
-        try{String nombre = ECnombre.getText().toUpperCase();
+        try{String nombre = (String) ECnombre.getSelectedItem();
         if(db.buscarCharla(nombre)==false)
         {
             JOptionPane.showMessageDialog(null, "02003: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
@@ -967,7 +973,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Usted ya ha ingresado asistentes a esta charla. Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
             db.eliminarCharla(nombre);
             JOptionPane.showMessageDialog(null, "Charla eliminada.");
-            ECnombre.setText("");
         }}
         catch(FechaException e)
         {
@@ -1019,6 +1024,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void eliminarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCharlaActionPerformed
         PPeliminarCharla.pack();
         PPeliminarCharla.setVisible(true);
+        ECnombre.removeAllItems();
+        for(Charla charla: registro.getCharlas())
+        {
+            ECnombre.addItem(charla.getNombre());
+        }
     }//GEN-LAST:event_eliminarCharlaActionPerformed
 
     private void mostrarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarCharlaActionPerformed
@@ -1155,7 +1165,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JButton CUnew;
     private javax.swing.JTextField CUnombre;
     private javax.swing.JComboBox<String> CUtipo;
-    private javax.swing.JTextField ECnombre;
+    private javax.swing.JComboBox<String> ECnombre;
     private com.toedter.calendar.JDateChooser MCcalendar;
     private javax.swing.JTextArea MCinfoCharla;
     private javax.swing.JButton MCverCharlas;
