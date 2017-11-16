@@ -123,9 +123,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         areaAsistentes = new javax.swing.JTextArea();
-        VAnombrecharla = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         verCharlasButton = new javax.swing.JButton();
+        VAnombrecharla = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ingresoUsuario = new javax.swing.JTextField();
@@ -761,12 +761,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         areaAsistentes.setRows(5);
         jScrollPane3.setViewportView(areaAsistentes);
 
-        VAnombrecharla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VAnombrecharlaActionPerformed(evt);
-            }
-        });
-
         jLabel20.setText("Ingrese el nombre de la charla:");
 
         verCharlasButton.setText("OK");
@@ -775,6 +769,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 verCharlasButtonActionPerformed(evt);
             }
         });
+
+        VAnombrecharla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -787,8 +783,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VAnombrecharla, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(VAnombrecharla, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(verCharlasButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -798,12 +794,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VAnombrecharla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
-                    .addComponent(verCharlasButton))
+                    .addComponent(verCharlasButton)
+                    .addComponent(VAnombrecharla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dialogAsistentesLayout = new javax.swing.GroupLayout(dialogAsistentes.getContentPane());
@@ -1081,10 +1077,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         estudianteVCharlas.setText(info);
     }//GEN-LAST:event_jb_buscarActionPerformed
 
-    private void VAnombrecharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VAnombrecharlaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VAnombrecharlaActionPerformed
-
     private void horasRestantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horasRestantesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_horasRestantesActionPerformed
@@ -1092,11 +1084,19 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void verAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verAsistentesActionPerformed
         dialogAsistentes.pack();
         dialogAsistentes.setVisible(true);
-        VAnombrecharla.setText("");
+        VAnombrecharla.removeAllItems();
+        for(Charla charla: registro.getCharlas())
+        {
+            VAnombrecharla.addItem(charla.getNombre());
+        }
     }//GEN-LAST:event_verAsistentesActionPerformed
 
+    private void ACduracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACduracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ACduracionActionPerformed
+
     private void verCharlasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCharlasButtonActionPerformed
-        String nombrec=VAnombrecharla.getText().toUpperCase();
+        String nombrec=(String) VAnombrecharla.getSelectedItem();
         if(registro.buscarCharla(nombrec)==false)
         {
             JOptionPane.showMessageDialog(null, "02002: Esta charla no existe", "Error",JOptionPane.ERROR_MESSAGE);
@@ -1112,10 +1112,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_verCharlasButtonActionPerformed
-
-    private void ACduracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACduracionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ACduracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1173,7 +1169,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JDialog PPagregarCharla;
     private javax.swing.JDialog PPeliminarCharla;
     private javax.swing.JDialog PPmostrarCharla;
-    private javax.swing.JTextField VAnombrecharla;
+    private javax.swing.JComboBox<String> VAnombrecharla;
     private javax.swing.JButton agregarAsistente;
     private javax.swing.JButton agregarCharla;
     private javax.swing.JTextArea areaAsistentes;
