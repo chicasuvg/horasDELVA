@@ -108,6 +108,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         charlasAsistidasInfo = new javax.swing.JTextArea();
         jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         crearUsuario = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -359,8 +360,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         eliminarCharlaDeseo.setText("Estoy consciente que al eliminar la charla elimino todos los datos que contiene.");
 
-        ECnombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -431,8 +430,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                 ingresarAsistenciaActionPerformed(evt);
             }
         });
-
-        AAnombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -599,13 +596,15 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         jLabel22.setText("Información de charlas a las que se ha asistido:");
 
+        jLabel23.setText("(Maximo: 7)");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel19))
@@ -613,7 +612,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(horasCumplidas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(horasRestantes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -638,7 +639,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(horasCumplidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(horasRestantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel23))
                 .addGap(7, 7, 7)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -944,6 +946,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         ACnombre.setText("");
         AClugar.setText("");
+        ACcalendar.setDate(null);
     }//GEN-LAST:event_borrarActionPerformed
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
@@ -1199,6 +1202,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
