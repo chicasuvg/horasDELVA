@@ -1095,9 +1095,16 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(null,"Usted ya ha ingresado asistentes a esta charla. Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
-                db.eliminarCharla(nombre);
-                JOptionPane.showMessageDialog(null, "Charla eliminada.");
+                if (eliminarCharlaDeseo.isSelected() == true)
+                {
+                    JOptionPane.showMessageDialog(null,"Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
+                    db.eliminarCharla(nombre);
+                    JOptionPane.showMessageDialog(null, "Charla eliminada.");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Para eliminar la charla debe aceptar que se eliminarán los datos.", "Error",JOptionPane.ERROR_MESSAGE);
+                }
             }
         
         
