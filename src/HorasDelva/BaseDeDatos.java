@@ -164,8 +164,6 @@ public class BaseDeDatos {
             ds.save(delva);
             UpdateOperations upd = ds.createUpdateOperations(Administrador.class).set("charlasAdmin", usuarioA.mostrarCharlas());
             ds.update(query, upd,false);        
-            UpdateOperations upd1 = ds.createUpdateOperations(Estudiante.class).set("charlasEst", usuarioA.mostrarCharlas());
-            ds.update(query1, upd1,false);  
         }
         return existeCharla;
         
@@ -279,6 +277,8 @@ public class BaseDeDatos {
                         
                         UpdateOperations update = ds.createUpdateOperations(Charla.class).set("asistentes", usuarioA.agregarAsistentes(nombrec, carnet)); 
                         ds.update(query2, update, false);
+                        UpdateOperations upd1 = ds.createUpdateOperations(Estudiante.class).add("charlasEst", delva);
+                        ds.update(query1, upd1,false);  
                     }
                 }
                 

@@ -18,7 +18,7 @@ public class Estudiante
 {
     @Id private ObjectId id; 
     private String usuario;
-    @NotSaved private String contrasena;
+    private String contrasena;
     private int horasDone;
     private int horasRestantes;
     @NotSaved private ArrayList<Charla> charlasEst;

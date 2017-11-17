@@ -115,7 +115,7 @@ public class Charla
     {   String asistieron="";
         for(Estudiante asistente:asistentes)
         {
-            asistieron+=asistente.getNombre();
+            asistieron+= "\n" +asistente.getNombre();
         }
         return asistieron;
     }
