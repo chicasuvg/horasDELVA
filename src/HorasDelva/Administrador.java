@@ -10,7 +10,6 @@ package HorasDelva;
 
 import java.util.ArrayList;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.NotSaved;
@@ -109,7 +108,7 @@ public class Administrador
                     if (estudiante.getNombre().equals(carnet))
                     {
                         estudiante.addHoras(); //agregarle al estudiante las horas que cumplio
-                        delva.setAsistentes(estudiante); //para agregar a la lista de asistentes al estudiante
+                        delva.addAsistentes(estudiante); //para agregar a la lista de asistentes al estudiante
                     }
                 }
                 asistentes = delva.getAsistentes();

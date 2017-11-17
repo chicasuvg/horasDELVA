@@ -373,6 +373,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         eliminarCharlaDeseo.setText("Estoy consciente que al eliminar la charla elimino todos los datos que contiene.");
 
+        ECnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ECnombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -587,9 +593,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel25))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel25)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(MCcalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1057,18 +1064,21 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarActionPerformed
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
-        try{String nombre = (String) ECnombre.getSelectedItem();
-        if(db.buscarCharla(nombre)==false)
+        try
         {
-            JOptionPane.showMessageDialog(null, "02003: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+            String nombre = (String) ECnombre.getSelectedItem();
+            if(db.buscarCharla(nombre)==false)
+            {
+                JOptionPane.showMessageDialog(null, "02003: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                fechaFutura.fechaFutura(db.fechaCharla(nombre));
+                JOptionPane.showMessageDialog(null,"Usted ya ha ingresado asistentes a esta charla. Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
+                db.eliminarCharla(nombre);
+                JOptionPane.showMessageDialog(null, "Charla eliminada.");
+            }
         }
-        else
-        {
-            fechaFutura.fechaFutura(db.fechaCharla(nombre));
-            JOptionPane.showMessageDialog(null,"Usted ya ha ingresado asistentes a esta charla. Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
-            db.eliminarCharla(nombre);
-            JOptionPane.showMessageDialog(null, "Charla eliminada.");
-        }}
         catch(FechaException e)
         {
             JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
@@ -1120,9 +1130,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         PPeliminarCharla.pack();
         PPeliminarCharla.setVisible(true);
         ECnombre.removeAllItems();
-        for(Charla charla: registro.getCharlas())
+        for (Charla delva : db.getCharlas())
         {
-            ECnombre.addItem(charla.getNombre());
+            ECnombre.addItem(delva.getNombre());
         }
     }//GEN-LAST:event_eliminarCharlaActionPerformed
 
@@ -1136,7 +1146,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         PPaddAsistente.setVisible(true);
         AAcarnet.setText("");
         AAnombre.removeAllItems();
-        for(Charla charla: registro.getCharlas())
+        for(Charla charla: db.getCharlas())
         {
             AAnombre.addItem(charla.getNombre());
         }
@@ -1145,13 +1155,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void agregarCharlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCharlaActionPerformed
         PPagregarCharla.pack();
         PPagregarCharla.setVisible(true);
+        
     }//GEN-LAST:event_agregarCharlaActionPerformed
 
     private void MCverCharlasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MCverCharlasActionPerformed
         DateFormat date = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = date.format(MCcalendar.getDate());
         String info = "";
-        for (Charla charla : registro.getCharlas())
+        for (Charla charla : db.getCharlas())
         {
             if(charla.getFecha().equals(fecha))
             {
@@ -1188,7 +1199,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         dialogAsistentes.pack();
         dialogAsistentes.setVisible(true);
         VAnombrecharla.removeAllItems();
-        for(Charla charla: registro.getCharlas())
+        for(Charla charla: db.getCharlas())
         {
             VAnombrecharla.addItem(charla.getNombre());
         }
@@ -1206,7 +1217,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         }
         else
         {
-            for(Charla charla:registro.getCharlas())
+            for(Charla charla:db.getCharlas())
             {
                 if(charla.getNombre().equals(nombrec))
                 {
@@ -1222,15 +1233,22 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int mes = (int) buscarMes.getSelectedItem();
+        int mes =  Integer.parseInt((String)buscarMes.getSelectedItem());
         int anio= Integer.parseInt(buscarAnio.getText());
-        String dias ="";
-        for(Charla charla: registro.getCharlas())
+        String dias = "En este mes no hay charlas ingresadas.";
+        for(Charla charla: db.getCharlas())
         {
             String[] mesya=charla.getFecha().split("/");
             if(Integer.parseInt(mesya[1])==mes && Integer.parseInt(mesya[2])==anio)
             {
-                dias+=charla.getFecha();
+                if (db.getCharlas().get(0).getNombre().equals(charla.getNombre()))
+                {
+                    dias = "\n"+charla.getFecha();
+                }
+                else
+                {
+                    dias += "\n"+charla.getFecha();
+                }
             }
         }
         jTextArea1.setText(dias);
@@ -1246,7 +1264,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         int mes = (int) buscarMes1.getSelectedItem();
         int anio= Integer.parseInt(buscarAnio1.getText());
         String dias ="";
-        for(Charla charla: registro.getCharlas())
+        for(Charla charla: db.getCharlas())
         {
             String[] mesya=charla.getFecha().split("/");
             if(Integer.parseInt(mesya[1])==mes && Integer.parseInt(mesya[2])==anio)
@@ -1257,6 +1275,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jTextArea2.setText(dias);
         buscarAnio1.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ECnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ECnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ECnombreActionPerformed
 
     /**
      * @param args the command line arguments

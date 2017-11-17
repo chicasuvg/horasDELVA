@@ -58,11 +58,13 @@ public class BaseDeDatos {
     {
         return usuarioA;
     }
-    public List<Charla> getCharlas()
+    public ArrayList<Charla> getCharlas()
     {
+        ArrayList<Charla> delvas = new ArrayList();
         query2 = ds.createQuery(Charla.class);
         charlas = query2.asList();
-        return charlas;
+        for (Charla delva: charlas) { delvas.add(delva); }
+        return delvas;
     }
     public boolean crearUsuario(String tipoUsuario, String nombreUsuario, String contrasena)
     {

@@ -64,7 +64,7 @@ public class Charla
      * Agregar asistentes a la charla
      * @param estudiante: estudiante
      */
-    public void setAsistentes(Estudiante estudiante)
+    public void addAsistentes(Estudiante estudiante)
     {
         this.asistentes.add(estudiante);
     }
@@ -82,7 +82,7 @@ public class Charla
         String assist = "";
         for(Estudiante estudiante: asistentes)
         {
-            assist += estudiante.getNombre();
+            assist += "\n\t" +estudiante.getNombre();
         }
         hilo += "\nAsistentes: "+ assist;
         return hilo;
