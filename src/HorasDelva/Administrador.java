@@ -23,7 +23,7 @@ public class Administrador
     private ArrayList<Charla> charlasAdmin;
     @NotSaved private ArrayList<Estudiante> alumnos;
     @NotSaved private boolean existente; //para ver si un estudiante existe en la base de datos o no.
-    
+    //CONSTRUCTOR DE MONGO
     public Administrador()
     {
         charlasAdmin = new ArrayList<>();
