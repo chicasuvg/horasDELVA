@@ -31,7 +31,7 @@ public class BaseDeDatos {
     {
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
-        morphia.map(Administrador.class).map(Estudiante.class).map(Charla.class).map(Registro.class);
+        morphia.map(Administrador.class).map(Estudiante.class).map(Charla.class);
         ds = morphia.createDatastore(mongo, "HorasDelva"); // Base Datos
         query = ds.createQuery(Administrador.class);
         List<Administrador> busqueda = query.asList();

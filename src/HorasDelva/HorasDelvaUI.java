@@ -22,7 +22,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     /**
      * Creates new form HorasDelvaUI
      */
-    Registro registro;
     Administrador admin;
     BaseDeDatos db;
     Date ahora;
@@ -34,7 +33,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         
         initComponents();
         db = new BaseDeDatos();
-        registro = new Registro();
         ahora= new Date();
         fecha= new SimpleDateFormat("dd/MM/yyyy");
         hoy=(fecha.format(ahora)); 
