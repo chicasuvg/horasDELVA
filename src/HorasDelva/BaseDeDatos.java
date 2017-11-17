@@ -182,6 +182,8 @@ public class BaseDeDatos {
         return existeCharla;
         
     }
+    
+    
     public boolean buscarEstudiante(String carnet)
     {
         query1 = ds.createQuery(Estudiante.class);
