@@ -1110,23 +1110,30 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private void ingresarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarAsistenciaActionPerformed
         String carnet = AAcarnet.getText().toUpperCase();
         String nombrec =(String) AAnombre.getSelectedItem(); 
-        if(db.buscarEstudiante(carnet) == false)
+        try{
+            if(db.buscarEstudiante(carnet) == false)
+            {
+                JOptionPane.showMessageDialog(null, "03001: El carnet que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(db.buscarCharla(nombrec)==false)
+            {
+                JOptionPane.showMessageDialog(null, "02002: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(db.buscarAsistente(nombrec, carnet)==true)
+            {
+                JOptionPane.showMessageDialog(null, "03002: Usted ya ingreso este alumno.", "Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                String fecha=db.fechaCharla(nombrec);
+                fechaFutura.fechaFutura(fecha);
+                db.agregarAsistentes(nombrec, carnet);
+                JOptionPane.showMessageDialog(null, "Asistencia ingresada exitosamente.", "Ingreso",JOptionPane.PLAIN_MESSAGE);
+                AAcarnet.setText("");
+            }}
+        catch(FechaException e)
         {
-            JOptionPane.showMessageDialog(null, "03001: El carnet que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else if(db.buscarCharla(nombrec)==false)
-        {
-            JOptionPane.showMessageDialog(null, "02002: La charla que ha ingresado no existe.", "Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else if(db.buscarAsistente(nombrec, carnet)==true)
-        {
-            JOptionPane.showMessageDialog(null, "03002: Usted ya ingreso este alumno.", "Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else
-        {
-            db.agregarAsistentes(nombrec, carnet);
-            JOptionPane.showMessageDialog(null, "Asistencia ingresada exitosamente.", "Ingreso",JOptionPane.PLAIN_MESSAGE);
-            AAcarnet.setText("");
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ingresarAsistenciaActionPerformed
 
@@ -1255,6 +1262,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(buscarAnio.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Uno de los campos esta vacio");
+        }
+        else{
         int mes =  Integer.parseInt((String)buscarMes.getSelectedItem());
         int anio= Integer.parseInt(buscarAnio.getText());
         String dias = "En este mes no hay charlas ingresadas.";
@@ -1274,7 +1286,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         }
         jTextArea1.setText(dias);
-        buscarAnio.setText("");
+        buscarAnio.setText("");}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void buscarAnio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAnio2ActionPerformed
@@ -1283,6 +1295,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void okEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okEstudianteActionPerformed
         // TODO add your handling code here:
+        if(buscarAnio2.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Uno de los campos esta vacio");
+        }
+        else{
         int mes = Integer.parseInt(String.valueOf(buscarMes1.getSelectedItem()));
         int anio= Integer.parseInt(buscarAnio2.getText());
         String dias = "En este mes no hay charlas ingresadas.";
@@ -1302,7 +1319,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         }
         futurasCEst.setText(dias);
-        buscarAnio2.setText("");
+        buscarAnio2.setText("");}
     }//GEN-LAST:event_okEstudianteActionPerformed
 
     private void ECnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ECnombreActionPerformed
