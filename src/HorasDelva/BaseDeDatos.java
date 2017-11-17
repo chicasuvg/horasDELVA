@@ -44,6 +44,10 @@ public class BaseDeDatos {
         admin = false;
         est = false;
     }
+    /**
+     * Para que no abra las ventanas del estudiantes si ya se ingreso como administrador
+     * @return est
+     */
     public boolean getEst()
     {
         return est;
