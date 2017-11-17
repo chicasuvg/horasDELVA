@@ -23,14 +23,16 @@ public class Administrador
     private ArrayList<Charla> charlasAdmin;
     @NotSaved private ArrayList<Estudiante> alumnos;
     @NotSaved private boolean existente; //para ver si un estudiante existe en la base de datos o no.
-    //CONSTRUCTOR DE MONGO
+    /**
+     * CONSTRUCTOR DE MONGO
+     */
     public Administrador()
     {
         charlasAdmin = new ArrayList<>();
         alumnos = new ArrayList<>();
     }
     /**
-     * Constructor
+     * Constructor de Java
      * @param usuario usuario
      * @param contrasena contrasena
      */
@@ -42,6 +44,10 @@ public class Administrador
         alumnos = new ArrayList<>();
         existente = true;
     }
+    /**
+     * Agregar alumnos a la lista de alumnos que tiene el administrador
+     * @param estudiante: estudiante a agregar
+     */
     public void setAlumnos(Estudiante estudiante)
     {
         alumnos.add(estudiante);
@@ -77,6 +83,7 @@ public class Administrador
     /**
      * Metodo para eliminar una charla de la lista. 
      * @param busqueda: nombre de la charla que se quiere eliminar.
+     * @return charlasAdmin
      */
     public ArrayList<Charla> eliminarCharla(String busqueda)
     {
@@ -95,6 +102,7 @@ public class Administrador
      * Para obtener el nombre de usuario del administrador
      * @param bcharla: representa el nombre de la charla a la que quiere ingresarle la asistencia
      * @param carnet: carnet del estudiante que se quiere modificar la asistencia.
+     * @return asistentes
      */
     public ArrayList<Estudiante> agregarAsistentes(String bcharla, String carnet) 
     { 

@@ -22,12 +22,21 @@ public class Charla
     private String fecha;
     private ArrayList<Estudiante> asistentes;
     private int duracion;
-    //CONSTRUCTOR DE MONGO
+    /**
+     * CONSTRUCTOR DE MONGO
+     */
     public Charla()
     {
         asistentes = new ArrayList<>();
     }
-    //CONSTRUCTOR DE JAVA
+    /**
+     * CONSTRUCTOR DE JAVA
+     * @param nombre: nombre de la charla
+     * @param salon: lugar en que ocurrirá
+     * @param hora: hora 
+     * @param fecha: fecha en la que pasará
+     * @param duracion: cuántas horas durará
+     */
     public Charla(String nombre, String salon, String hora, String fecha, int duracion)
     {
         this.nombre = nombre;

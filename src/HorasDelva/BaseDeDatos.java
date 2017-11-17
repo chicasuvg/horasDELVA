@@ -46,32 +46,54 @@ public class BaseDeDatos {
     }
     /**
      * Para que no abra las ventanas del estudiantes si ya se ingreso como administrador
-     * @return est
+     * @return boolean: est de si es un estudiante el que está ingresando
      */
     public boolean getEst()
     {
         return est;
     }
+    /**
+     * Para que no abra las ventanas del administrador si ya se ingreso como estudiante
+     * @return boolean: est de si es un administrador el que está ingresando
+     */
     public boolean getAdmin()
     {
         return admin;
     }
+    /**
+     * Para obtener el usuario que actualmente se está utilizando
+     * @return Estudiante usuarioE
+     */
     public Estudiante getEstudiante()
     {
         return usuarioE;
     }
+    /**
+     * Para que oculte la ventanita de funcionalidades del estudiante
+     */
     public void setEst()
     {
         est = false;
     }
+    /**
+     * Para que oculte la ventanita de funcionalidades del administrador
+     */
     public void setAdmin()
     {
         admin = false;
     }
+    /**
+     * Para obtener el usuario que actualmente se está usando
+     * @return Administrador usuarioA
+     */
     public Administrador getAdministrador()
     {
         return usuarioA;
     }
+    /**
+     * Para obtener todas las charlas que se han ingresado en la base de datos. 
+     * @return ArrayList delvas;
+     */
     public ArrayList<Charla> getCharlas()
     {
         ArrayList<Charla> delvas = new ArrayList();
@@ -80,6 +102,13 @@ public class BaseDeDatos {
         for (Charla delva: charlas) { delvas.add(delva); }
         return delvas;
     }
+    /**
+     * Para crear un nuevo usuario e ingresarlo en la base de datos
+     * @param tipoUsuario: para saber si es un admin o un estudiante el que quiere ingresar
+     * @param nombreUsuario: el nombre de usuario nuevo
+     * @param contrasena: la contraseña nueva
+     * @return boolean si ya existe el usuario o no
+     */
     public boolean crearUsuario(String tipoUsuario, String nombreUsuario, String contrasena)
     {
         query = ds.createQuery(Administrador.class);
@@ -121,6 +150,12 @@ public class BaseDeDatos {
         }
         return existeUsuario;
     }
+    /**
+     * Para verificar si un usuario ya creado está ingresando su información correctamente
+     * @param nombreUsuario: el nombre de usuario que se está ingresando 
+     * @param contrasena: la contraseña que se quiere ingresar
+     * @return boolean para si el usuario puede ingresar al programa o no
+     */
     public boolean verificacionIngreso(String nombreUsuario, String contrasena)
     {
         boolean puedeIngresar = false;
@@ -158,6 +193,15 @@ public class BaseDeDatos {
         }
         return puedeIngresar;
     }
+    /**
+     * Crear una nueva charla
+     * @param nombre: nombre de charla
+     * @param salon: lugar de charla
+     * @param time: hora de la charla
+     * @param fecha: fecha en que ocurrirá
+     * @param duracion: cuánto dura la charla
+     * @return boolean de si la charla ya existe o no
+     */
     public boolean ingresarCharla(String nombre, String salon, String time, String fecha, int duracion)
     {
         boolean existeCharla = false;
@@ -182,6 +226,11 @@ public class BaseDeDatos {
         return existeCharla;
         
     }
+    /**
+     * Para buscar si un estudiante existe en la base de datos
+     * @param carnet: nombre del usuario estudiante
+     * @return boolean de si existe el estudiante o no
+     */
     public boolean buscarEstudiante(String carnet)
     {
         query1 = ds.createQuery(Estudiante.class);
@@ -199,6 +248,11 @@ public class BaseDeDatos {
         }
         return existe;
     }
+    /**
+     * Para saber si una charla existe o no
+     * @param nombre: nombre de la charla a buscar
+     * @return boolean existe
+     */
     public boolean buscarCharla(String nombre)
     {   
         boolean existe=false;
@@ -215,6 +269,12 @@ public class BaseDeDatos {
         }
         return existe;
     }
+    /**
+     * Buscar si ya se ha ingresado un estudiante como asistente en una charla específica
+     * @param nombre: nombre de la charla
+     * @param carnet: usuario del estudiante
+     * @return boolean existe
+     */
     public boolean buscarAsistente(String nombre, String carnet)
     { 
         boolean existe=false;
@@ -231,6 +291,11 @@ public class BaseDeDatos {
         }
         return existe;
     }
+    /**
+     * Para buscar si un administrador existe en la base de datos
+     * @param usuario: nombre del usuario administrador
+     * @return boolean de si existe el administrador o no
+     */
     public boolean buscarAdmin(String usuario)
     {
         query = ds.createQuery(Administrador.class);
@@ -252,6 +317,11 @@ public class BaseDeDatos {
         }
         return existe;
     }
+    /**
+     * buscar la fecha en la que ocurrirá una charla
+     * @param nombre: nombre de la charla
+     * @return String fecha de la charla
+     */
     public String fechaCharla(String nombre)
     {
         Query<Charla>query2 = ds.createQuery(Charla.class);
@@ -267,6 +337,10 @@ public class BaseDeDatos {
         }
         return fecha;
     }
+    /**
+     * Para eliminar una charla de la base de datos
+     * @param nombre: nombre de la charla a eliminar
+     */
     public void eliminarCharla(String nombre)
     {
         ArrayList<Charla> eliminar = usuarioA.eliminarCharla(nombre);
@@ -279,6 +353,11 @@ public class BaseDeDatos {
         Query<Charla> queryDelete =  ds.createQuery(Charla.class).filter("nombre", nombre);
         ds.delete(queryDelete);
     }
+    /**
+     * Agregar estudiantes como asistentes a una charla
+     * @param nombrec: nombre de la charla
+     * @param carnet: carnet del estudiante
+     */
     public void agregarAsistentes(String nombrec, String carnet)
     {
         ArrayList<Charla> charlitas = usuarioA.mostrarCharlas();

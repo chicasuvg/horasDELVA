@@ -22,13 +22,15 @@ public class Estudiante
     private int horasDone;
     private int horasRestantes;
     @NotSaved private ArrayList<Charla> charlasEst;
-    
+    /**
+     * CONSTRUCTOR MONGO
+     */
     public Estudiante()
     {
         charlasEst = new ArrayList<>();
     }
     /**
-     * 
+     * CONSTRUCTOR JAVA
      * @param usuario: nombre del usuario
      * @param contrasena: contrasena
      */
@@ -73,8 +75,7 @@ public class Estudiante
     }
     
     /**
-     * 
-     * @param hora: duracion de la charla
+     * Agregarle horas al estudiante
      */
     public void addHoras()
     {   
