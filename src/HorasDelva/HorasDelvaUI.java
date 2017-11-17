@@ -1086,8 +1086,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarActionPerformed
 
     private void eliminarDELVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDELVAActionPerformed
-        try
-        {
+        
+        
             String nombre = (String) ECnombre.getSelectedItem();
             if(db.buscarCharla(nombre)==false)
             {
@@ -1095,16 +1095,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
             else
             {
-                fechaFutura.fechaFutura(db.fechaCharla(nombre));
                 JOptionPane.showMessageDialog(null,"Usted ya ha ingresado asistentes a esta charla. Eliminar una charla con asistentes no eliminara la asistencia de los mismos.");
                 db.eliminarCharla(nombre);
                 JOptionPane.showMessageDialog(null, "Charla eliminada.");
             }
-        }
-        catch(FechaException e)
-        {
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-        }
+        
+        
     }//GEN-LAST:event_eliminarDELVAActionPerformed
 
     private void ingresarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarAsistenciaActionPerformed
@@ -1141,13 +1137,13 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         String tipoUsuario = String.valueOf(CUtipo.getSelectedItem());
         String newnombre = CUnombre.getText();
         String newcont = CUcont.getText();
-        if(db.crearUsuario(tipoUsuario, newnombre, newcont) == true)
+        if((tipoUsuario.equals("Administrador") && db.buscarAdmin(newnombre) == true) || (tipoUsuario.equals("Estudiante") && db.buscarEstudiante(newnombre)==true))
         {
             JOptionPane.showMessageDialog(null, "01002: Este usuario ya existe.", "Error",JOptionPane.ERROR_MESSAGE);
-        
         }
         else
         {
+            db.crearUsuario(tipoUsuario, newnombre, newcont);
             JOptionPane.showMessageDialog(null, "Usuario creado.");
             CUnombre.setText("");
             CUcont.setText("");
