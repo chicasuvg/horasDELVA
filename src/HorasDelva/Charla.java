@@ -9,7 +9,6 @@
 package HorasDelva;
 import java.util.ArrayList;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -17,14 +16,17 @@ import org.mongodb.morphia.annotations.Id;
 public class Charla
 {
     @Id private ObjectId id;
-    private String nombre; //el nombre de la charla siempre ira en mayusculas
+    private String nombre;
     private String lugar;
     private String hora;
     private String fecha;
     private ArrayList<Estudiante> asistentes;
     private int duracion;
     
-    public Charla(){asistentes = new ArrayList<>();}
+    public Charla()
+    {
+        asistentes = new ArrayList<>();
+    }
     public Charla(String nombre, String salon, String hora, String fecha, int duracion)
     {
         this.nombre = nombre;

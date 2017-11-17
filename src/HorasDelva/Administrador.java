@@ -13,6 +13,7 @@ import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.NotSaved;
 
 @Entity
 public class Administrador
@@ -21,8 +22,8 @@ public class Administrador
     private String usuario;
     private String contrasena;
     private ArrayList<Charla> charlasAdmin;
-    private ArrayList<Estudiante> alumnos;
-    private boolean existente; //para ver si un estudiante existe en la base de datos o no.
+    @NotSaved private ArrayList<Estudiante> alumnos;
+    @NotSaved private boolean existente; //para ver si un estudiante existe en la base de datos o no.
     
     public Administrador()
     {
@@ -111,8 +112,8 @@ public class Administrador
                         delva.setAsistentes(estudiante); //para agregar a la lista de asistentes al estudiante
                     }
                 }
+                asistentes = delva.getAsistentes();
             }
-            asistentes = delva.getAsistentes();
         }
         return asistentes;
     }

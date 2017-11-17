@@ -20,8 +20,8 @@ public class BaseDeDatos {
     private List<Estudiante> estudiantes;
     private List<Charla> charlas;
     private Query<Administrador> query;
-    private Query<Estudiante> query1;
     private Query<Charla> query2;
+    private Query<Estudiante> query1;
     private boolean admin;
     private boolean est;
     private Estudiante usuarioE;
@@ -31,18 +31,16 @@ public class BaseDeDatos {
     {
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
-        morphia.map(Administrador.class).map(Estudiante.class).map(Charla.class);
-        ds = morphia.createDatastore(mongo, "HorasDelva");
+        morphia.map(Administrador.class).map(Estudiante.class).map(Charla.class).map(Registro.class);
+        ds = morphia.createDatastore(mongo, "HorasDelva"); // Base Datos
         query = ds.createQuery(Administrador.class);
         List<Administrador> busqueda = query.asList();
         administradores = busqueda;
         query1 = ds.createQuery(Estudiante.class);
         List<Estudiante> busqueda1 = query1.asList();
-        query2 = ds.createQuery(Charla.class);
-        List<Charla> busqueda2 = query2.asList();
-        charlas = busqueda2;
         estudiantes = busqueda1;
-        administradores = busqueda;
+        query2 = ds.createQuery(Charla.class);
+        charlas = query2.asList();
     }
     public boolean getEst()
     {
@@ -60,6 +58,12 @@ public class BaseDeDatos {
     {
         return usuarioA;
     }
+    public List<Charla> getCharlas()
+    {
+        query2 = ds.createQuery(Charla.class);
+        charlas = query2.asList();
+        return charlas;
+    }
     public boolean crearUsuario(String tipoUsuario, String nombreUsuario, String contrasena)
     {
         query = ds.createQuery(Administrador.class);
@@ -68,9 +72,6 @@ public class BaseDeDatos {
         query1 = ds.createQuery(Estudiante.class);
         List<Estudiante> busqueda1 = query1.asList();
         estudiantes = busqueda1;
-        query2 = ds.createQuery(Charla.class);
-        List<Charla> busqueda2 = query2.asList();
-        charlas = busqueda2;
         boolean existeUsuario = false;
         for (Administrador admin : administradores)
         {
@@ -116,6 +117,7 @@ public class BaseDeDatos {
         query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
+        
         ArrayList<Charla> charlasA = new ArrayList<>();
         for(Estudiante estudiante: estudiantes)
         {
@@ -143,7 +145,7 @@ public class BaseDeDatos {
     public boolean ingresarCharla(String nombre, String salon, String time, String fecha, int duracion)
     {
         boolean existeCharla = false;
-        query2 = ds.createQuery(Charla.class);
+        Query<Charla>query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
         for (Charla delva : charlas)
@@ -184,7 +186,7 @@ public class BaseDeDatos {
     public boolean buscarCharla(String nombre)
     {   
         boolean existe=false;
-        query2 = ds.createQuery(Charla.class);
+        Query<Charla>query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
         
@@ -200,7 +202,7 @@ public class BaseDeDatos {
     public boolean buscarAsistente(String nombre, String carnet)
     { 
         boolean existe=false;
-        query2 = ds.createQuery(Charla.class);
+       Query<Charla> query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
         
@@ -232,7 +234,7 @@ public class BaseDeDatos {
     }
     public String fechaCharla(String nombre)
     {
-        query2 = ds.createQuery(Charla.class);
+        Query<Charla>query2 = ds.createQuery(Charla.class);
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
         String fecha="";
@@ -262,7 +264,7 @@ public class BaseDeDatos {
         ArrayList<Charla> charlitas = usuarioA.mostrarCharlas();
         query = ds.createQuery(Administrador.class);
         query1 = ds.createQuery(Estudiante.class).field("usuario").equal(carnet);
-        query2 = ds.createQuery(Charla.class).field("nombre").equal(nombrec);
+        Query<Charla> query2 = ds.createQuery(Charla.class).field("nombre").equal(nombrec);
         List<Estudiante> alumnos = query1.asList();
         for (Charla delva : charlitas)
         {
@@ -273,8 +275,8 @@ public class BaseDeDatos {
                     if(alumno.getNombre().equals(carnet))
                     {
                         
-                        UpdateOperations update = ds.createUpdateOperations(Charla.class).add("asistentes", carnet); 
-                        ds.update(query2, update, true);
+                        UpdateOperations update = ds.createUpdateOperations(Charla.class).set("asistentes", usuarioA.agregarAsistentes(nombrec, carnet)); 
+                        ds.update(query2, update, false);
                     }
                 }
                 

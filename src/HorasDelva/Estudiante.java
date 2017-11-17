@@ -12,17 +12,17 @@ import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.NotSaved;
 
 @Entity
 public class Estudiante
 {
     @Id private ObjectId id; 
     private String usuario;
-    private String contrasena;
+    @NotSaved private String contrasena;
     private int horasDone;
     private int horasRestantes;
-    private long carnet;
-    private ArrayList<Charla> charlasEst;
+    @NotSaved private ArrayList<Charla> charlasEst;
     
     public Estudiante()
     {
