@@ -108,7 +108,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         estudianteDate = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         estudianteVCharlas = new javax.swing.JTextArea();
-        jb_buscar = new javax.swing.JButton();
+        buscarEstudiante = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         horasRestantes = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -117,11 +117,11 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        futurasCEst = new javax.swing.JTextArea();
+        okEstudiante = new javax.swing.JButton();
         buscarMes1 = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        buscarAnio1 = new javax.swing.JTextField();
+        buscarAnio2 = new javax.swing.JTextField();
         crearUsuario = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -642,10 +642,10 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         estudianteVCharlas.setRows(5);
         jScrollPane2.setViewportView(estudianteVCharlas);
 
-        jb_buscar.setText("Buscar fecha");
-        jb_buscar.addActionListener(new java.awt.event.ActionListener() {
+        buscarEstudiante.setText("Buscar fecha");
+        buscarEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_buscarActionPerformed(evt);
+                buscarEstudianteActionPerformed(evt);
             }
         });
 
@@ -669,14 +669,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         jLabel23.setText("(Maximo: 7)");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane6.setViewportView(jTextArea2);
+        futurasCEst.setColumns(20);
+        futurasCEst.setRows(5);
+        jScrollPane6.setViewportView(futurasCEst);
 
-        jButton2.setText("OK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        okEstudiante.setText("OK");
+        okEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                okEstudianteActionPerformed(evt);
             }
         });
 
@@ -684,9 +684,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
         jLabel26.setText("Mes                                       Anio");
 
-        buscarAnio1.addActionListener(new java.awt.event.ActionListener() {
+        buscarAnio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarAnio1ActionPerformed(evt);
+                buscarAnio2ActionPerformed(evt);
             }
         });
 
@@ -718,9 +718,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(buscarMes1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(buscarAnio1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buscarAnio2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)))
+                                .addComponent(okEstudiante)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel19)
@@ -734,7 +734,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(125, 125, 125)
-                                .addComponent(jb_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buscarEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(24, 24, 24)))
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
@@ -760,14 +760,14 @@ public class HorasDelvaUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(buscarMes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buscarAnio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2)))
+                                    .addComponent(buscarAnio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(okEstudiante)))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(estudianteDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jb_buscar, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                    .addComponent(buscarEstudiante, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane6)
@@ -1198,12 +1198,12 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_horasCumplidasActionPerformed
 
-    private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
+    private void buscarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEstudianteActionPerformed
         // TODO add your handling code here:
         DateFormat date = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = date.format(estudianteDate.getDate());
         String info = "";
-        for (Charla charla : registro.getCharlas())
+        for (Charla charla : db.getCharlas())
         {
             if(charla.getFecha().equals(fecha))
             {
@@ -1211,7 +1211,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
             }
         }
         estudianteVCharlas.setText(info);
-    }//GEN-LAST:event_jb_buscarActionPerformed
+    }//GEN-LAST:event_buscarEstudianteActionPerformed
 
     private void horasRestantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horasRestantesActionPerformed
         // TODO add your handling code here:
@@ -1277,26 +1277,33 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         buscarAnio.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void buscarAnio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAnio1ActionPerformed
+    private void buscarAnio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAnio2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buscarAnio1ActionPerformed
+    }//GEN-LAST:event_buscarAnio2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void okEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okEstudianteActionPerformed
         // TODO add your handling code here:
-        int mes = (int) buscarMes1.getSelectedItem();
-        int anio= Integer.parseInt(buscarAnio1.getText());
-        String dias ="";
+        int mes = Integer.parseInt(String.valueOf(buscarMes1.getSelectedItem()));
+        int anio= Integer.parseInt(buscarAnio2.getText());
+        String dias = "En este mes no hay charlas ingresadas.";
         for(Charla charla: db.getCharlas())
         {
             String[] mesya=charla.getFecha().split("/");
             if(Integer.parseInt(mesya[1])==mes && Integer.parseInt(mesya[2])==anio)
             {
-                dias+=charla.getFecha();
+                if (db.getCharlas().get(0).getNombre().equals(charla.getNombre()))
+                {
+                    dias = "\n"+charla.getFecha();
+                }
+                else
+                {
+                    dias += "\n"+charla.getFecha();
+                }
             }
         }
-        jTextArea2.setText(dias);
-        buscarAnio1.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+        futurasCEst.setText(dias);
+        buscarAnio2.setText("");
+    }//GEN-LAST:event_okEstudianteActionPerformed
 
     private void ECnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ECnombreActionPerformed
         // TODO add your handling code here:
@@ -1364,7 +1371,8 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JButton borrar;
     private javax.swing.JButton botonIngresar;
     private javax.swing.JTextField buscarAnio;
-    private javax.swing.JTextField buscarAnio1;
+    private javax.swing.JTextField buscarAnio2;
+    private javax.swing.JButton buscarEstudiante;
     private javax.swing.JComboBox<String> buscarMes;
     private javax.swing.JComboBox<String> buscarMes1;
     private javax.swing.JTextArea charlasAsistidasInfo;
@@ -1375,6 +1383,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JButton eliminarDELVA;
     private com.toedter.calendar.JDateChooser estudianteDate;
     private javax.swing.JTextArea estudianteVCharlas;
+    private javax.swing.JTextArea futurasCEst;
     private javax.swing.JTextField horasCumplidas;
     private javax.swing.JTextField horasRestantes;
     private javax.swing.JButton ingresarAsistencia;
@@ -1383,7 +1392,6 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JDialog ingresoEst;
     private javax.swing.JTextField ingresoUsuario;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1427,10 +1435,9 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JButton jb_buscar;
     private javax.swing.JButton mostrarCharla;
     private javax.swing.JButton newCharla;
+    private javax.swing.JButton okEstudiante;
     private javax.swing.JButton verAsistentes;
     private javax.swing.JButton verCharlasButton;
     // End of variables declaration//GEN-END:variables
