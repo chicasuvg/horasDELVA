@@ -1137,7 +1137,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
 
     private void CUnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CUnewActionPerformed
         String tipoUsuario = String.valueOf(CUtipo.getSelectedItem());
-        String newnombre = CUnombre.getText();
+        String newnombre = CUnombre.getText().toUpperCase();
         String newcont = CUcont.getText();
         if((db.buscarAdmin(newnombre) == true) || (db.buscarEstudiante(newnombre)==true))
         {
