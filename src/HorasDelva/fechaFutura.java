@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/** 
+ * @author Ana Lucia Hernandez 17138
+ * Cindy Antillon 14581
+ * Andrea Arguello 17801
+ * @proposito  Tira una excepcion FechaException si la fecha aun no ha pasado
+ * @since 10/11/2017
+ * FechaFutura.java
+*/
 package HorasDelva;
 
 import java.text.SimpleDateFormat;
@@ -14,6 +17,11 @@ import java.util.Date;
  */
 public class fechaFutura {    
     
+    /**
+     * 
+     * @param newfecha fecha de la charla
+     * @throws FechaException si es futura
+     */
     public static void fechaFutura(String newfecha) throws FechaException
     {
         Date ahora= new Date();

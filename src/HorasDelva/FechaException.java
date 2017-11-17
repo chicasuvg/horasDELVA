@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/** 
+ * @author Ana Lucia Hernandez 17138
+ * Cindy Antillon 14581
+ * Andrea Arguello 17801
+ * @proposito  Excepcion que solo tira un mensaje
+ * @since 10/11/2017
+ * FechaException.java
+*/
 package HorasDelva;
 
 /**
@@ -11,6 +14,10 @@ package HorasDelva;
  */
 public class FechaException extends Exception{
     
+    /**
+     * 
+     * @param mensaje mensaje de la excepcion
+     */
     public FechaException(String mensaje)
     {
         super(mensaje);
