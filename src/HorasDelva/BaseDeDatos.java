@@ -191,10 +191,7 @@ public class BaseDeDatos {
                 existe=true;
                 return existe;
             }
-            else
-            {
-                existe = false;
-            }
+            
         }
         return existe;
     }
