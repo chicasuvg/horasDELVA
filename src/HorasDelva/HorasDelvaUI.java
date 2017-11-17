@@ -1009,13 +1009,15 @@ public class HorasDelvaUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        
-        if (db.verificacionIngreso(ingresoUsuario.getText().toUpperCase(), ingresoContrasena.getText()) == true)
+        db.setAdmin();
+        db.setEst();
+        if ((db.verificacionIngreso(ingresoUsuario.getText().toUpperCase(), ingresoContrasena.getText())) == true)
         {
             if (db.getAdmin() == true)
             {
                 ingresoAdmin.pack();
                 ingresoAdmin.setVisible(true);
+                
             }
             if(db.getEst() == true)
             {
@@ -1137,7 +1139,7 @@ public class HorasDelvaUI extends javax.swing.JFrame {
         String tipoUsuario = String.valueOf(CUtipo.getSelectedItem());
         String newnombre = CUnombre.getText();
         String newcont = CUcont.getText();
-        if((tipoUsuario.equals("Administrador") && db.buscarAdmin(newnombre) == true) || (tipoUsuario.equals("Estudiante") && db.buscarEstudiante(newnombre)==true))
+        if((db.buscarAdmin(newnombre) == true) || (db.buscarEstudiante(newnombre)==true))
         {
             JOptionPane.showMessageDialog(null, "01002: Este usuario ya existe.", "Error",JOptionPane.ERROR_MESSAGE);
         }

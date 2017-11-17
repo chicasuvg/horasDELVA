@@ -41,6 +41,8 @@ public class BaseDeDatos {
         estudiantes = busqueda1;
         query2 = ds.createQuery(Charla.class);
         charlas = query2.asList();
+        admin = false;
+        est = false;
     }
     public boolean getEst()
     {
@@ -53,6 +55,14 @@ public class BaseDeDatos {
     public Estudiante getEstudiante()
     {
         return usuarioE;
+    }
+    public void setEst()
+    {
+        est = false;
+    }
+    public void setAdmin()
+    {
+        admin = false;
     }
     public Administrador getAdministrador()
     {
@@ -179,6 +189,11 @@ public class BaseDeDatos {
             if(estudiante.getNombre().equals(carnet))
             {
                 existe=true;
+                return existe;
+            }
+            else
+            {
+                existe = false;
             }
         }
         return existe;
@@ -226,9 +241,13 @@ public class BaseDeDatos {
             if(admin.getNombre().equals(usuario))
             {
                 existe=true;
+                return existe;
                 
             }
-            else{existe=false;}
+            else
+            {
+                existe=false;
+            }
         }
         return existe;
     }
