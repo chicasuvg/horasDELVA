@@ -79,13 +79,13 @@ public class Estudiante
      */
     public void addHoras()
     {   
-        if(horasDone<7)
+        if(horasDone<8)
         {
             this.horasDone ++;
         }
         else 
         {
-            this.horasDone = 7;
+            this.horasDone = 8;
         }
     }
     /**

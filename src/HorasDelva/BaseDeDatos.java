@@ -24,8 +24,8 @@ public class BaseDeDatos {
     private Query<Charla> query2;
     private boolean admin;
     private boolean est;
-    public Estudiante usuarioE;
-    public Administrador usuarioA;
+    private Estudiante usuarioE;
+    private Administrador usuarioA;
     
     public BaseDeDatos()
     {
@@ -42,7 +42,7 @@ public class BaseDeDatos {
         List<Charla> busqueda2 = query2.asList();
         charlas = busqueda2;
         estudiantes = busqueda1;
-        query2 = ds.createQuery(Charla.class);
+        administradores = busqueda;
     }
     public boolean getEst()
     {
@@ -178,10 +178,6 @@ public class BaseDeDatos {
             {
                 existe=true;
             }
-            else
-            {
-                existe=false;
-            }
         }
         return existe;
     }
@@ -277,8 +273,8 @@ public class BaseDeDatos {
                     if(alumno.getNombre().equals(carnet))
                     {
                         
-                      //  UpdateOperations update = ds.createUpdateOperations(Charla.class).add("asistentes", carnet); 
-                        //ds.update(query2, update, true);
+                        UpdateOperations update = ds.createUpdateOperations(Charla.class).add("asistentes", carnet); 
+                        ds.update(query2, update, true);
                     }
                 }
                 
